@@ -14,11 +14,10 @@ public class MainClass extends Application {
 
     public static void main(String[] args) {
 
-        //launch();
+        launch();
 
 
-        Password p = new Password("NOCKERS_1234");
-        System.out.println(p.howStrongIsThePassword());
+
 
 
 

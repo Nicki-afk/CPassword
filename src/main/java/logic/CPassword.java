@@ -7,7 +7,7 @@ import org.passay.PasswordGenerator;
 
 import static org.passay.CharacterOccurrencesRule.ERROR_CODE;
 
-public abstract class CPassword {
+public abstract class CPassword  {
 
 
 
@@ -41,6 +41,7 @@ public abstract class CPassword {
 
     }
 
+    public CPassword(){}
 
     public int howStrongIsThePassword(String password){
 

@@ -1,14 +1,87 @@
 package logic;
 
+import javafx.event.EventHandler;
+import javafx.scene.Scene;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
+import javafx.scene.text.Text;
+import managers.AnimManager;
+
+
 public class Password extends CPassword {
 
 
     private String pass;
+    private Scene scene;
+    private TextField filed;
+    private int percentage;
+    private Text text;
+    private AnimManager animManager;
 
-    public Password(String pass){
-        super(pass);
-        this.pass = pass;
+    public Password(Scene scene , TextField field , Text text){
+        super();
+        this.scene = scene;
+        this.text = text;
+        this.filed = field;
+
+
     }
+
+
+    public void listen(){
+
+        this.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if(event.getCode() == KeyCode.ENTER){
+                    System.out.println("ENTER");
+                    setPass(filed.getText());
+                    percentage = howStrongIsThePassword();
+                    animManager = new AnimManager(text , percentage);
+                    animManager.start();
+
+                }
+
+
+            }
+        });
+
+        this.scene.setOnKeyTyped(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if(event.getCode() == KeyCode.ENTER){
+                    System.out.println("ENTER");
+
+                    setPass(filed.getText());
+                    percentage = howStrongIsThePassword();
+
+
+                }
+
+            }
+        });
+
+        this.scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+                if(event.getCode() == KeyCode.ENTER){
+                    System.out.println("ENTER");
+
+                    setPass(filed.getText());
+                    percentage = howStrongIsThePassword();
+
+
+                }
+
+            }
+        });
+
+    }
+
 
 
     @Override
@@ -22,11 +95,17 @@ public class Password extends CPassword {
         return super.howStrongIsThePassword();
     }
 
+
+    public int getPercentage() {
+        return percentage;
+    }
+
     public String getPass() {
         return pass;
     }
 
     public void setPass(String pass) {
         this.pass = pass;
+        setPassword(pass);
     }
 }
