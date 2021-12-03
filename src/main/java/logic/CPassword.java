@@ -24,7 +24,7 @@ public abstract class CPassword {
         }
 
         public String getCharacters() {
-            return "[email protected]#$%^&*()_+";
+            return "#$%^&*()_+";
         }
     };
 
@@ -51,12 +51,60 @@ public abstract class CPassword {
     }
 
     public int howStrongIsThePassword(){
-        return 0;
+
+        int securePassword = 0;
+
+        char[]upperCase = upperCaseChars.getCharacters().toCharArray();
+        char[]lowerCase = lowerCaseChars.getCharacters().toCharArray();
+        char[]specialChars = "#$%^&*()_+".toCharArray();
+        char[] numbers = "123456789".toCharArray();
+
+
+        for(int x = 0 ; x < upperCase.length; x++){
+
+            if(password.indexOf(upperCase[x]) != -1){
+                securePassword+=5;
+            }
+        }
+
+
+        for (int x = 0; x < lowerCase.length; x++){
+            if(password.indexOf(lowerCase[x]) > -1){
+                securePassword+=5;
+            }
+
+        }
+
+
+
+        for (int x = 0; x < specialChars.length; x++){
+            if(password.indexOf(specialChars[x]) > -1){
+                securePassword+=20;
+            }
+        }
+
+
+        for (int x = 0; x < numbers.length; x++){
+            if(password.indexOf(numbers[x]) > -1){
+                securePassword+=5;
+            }
+        }
+
+
+
+            if(securePassword > 100){
+                return 100;
+            }else if(securePassword < 0){
+                return 0;
+            }else{
+                return securePassword;
+            }
+
 
     }
 
     
-    abstract String generatePassword();
+    abstract public String generatePassword();
 
 
     public String getPassword() {

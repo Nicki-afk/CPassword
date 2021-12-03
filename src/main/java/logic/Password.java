@@ -12,7 +12,7 @@ public class Password extends CPassword {
 
 
     @Override
-    String generatePassword() {
+    public String generatePassword() {
         return gen.generatePassword(10, splCharRule, lowerCaseRule,
                 upperCaseRule, digitRule);
     }
