@@ -19,14 +19,15 @@ public class Password extends CPassword {
     private Text text;
     private AnimManager animManager;
 
-    public Password(Scene scene , TextField field , Text text){
+    public Password(Scene scene , TextField field   , Text text){
         super();
         this.scene = scene;
         this.text = text;
         this.filed = field;
 
-
     }
+
+    public Password(){}
 
 
     public void listen(){
@@ -47,39 +48,6 @@ public class Password extends CPassword {
 
             }
         });
-
-        this.scene.setOnKeyTyped(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-
-                if(event.getCode() == KeyCode.ENTER){
-                    System.out.println("ENTER");
-
-                    setPass(filed.getText());
-                    percentage = howStrongIsThePassword();
-
-
-                }
-
-            }
-        });
-
-        this.scene.setOnKeyReleased(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-
-                if(event.getCode() == KeyCode.ENTER){
-                    System.out.println("ENTER");
-
-                    setPass(filed.getText());
-                    percentage = howStrongIsThePassword();
-
-
-                }
-
-            }
-        });
-
     }
 
 

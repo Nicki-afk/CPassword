@@ -6,12 +6,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="mainPane" prefHeight="345.0" prefWidth="217.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+<Pane fx:id="mainPane" prefHeight="340.0" prefWidth="217.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
    <children>
       <TextField fx:id="passworUser" alignment="CENTER" layoutX="12.0" layoutY="14.0" prefHeight="25.0" prefWidth="191.0" promptText="WRITE PASSWORD" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
-      <TextField fx:id="recommendedPassword" alignment="CENTER" editable="false" layoutX="12.0" layoutY="271.0" prefHeight="25.0" prefWidth="191.0" promptText="RECOMMENDED PASSWORD" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC;" />
-      <Button fx:id="CopyButton" layoutX="12.0" layoutY="304.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="COPY" textFill="WHITE" />
-      <Button fx:id="exitButton" layoutX="119.0" layoutY="304.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="84.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="WHITE" />
+      <TextField fx:id="recommendedPassword" alignment="CENTER" editable="false" layoutX="12.0" layoutY="273.0" prefHeight="25.0" prefWidth="191.0" promptText="RECOMMENDED PASSWORD" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
+      <Button fx:id="CopyButton" layoutX="12.0" layoutY="306.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="101.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="COPY" textFill="WHITE" />
+      <Button fx:id="exitButton" layoutX="119.0" layoutY="306.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="84.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="WHITE" />
       <Text fill="WHITE" layoutX="26.0" layoutY="66.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PERCENTAGE PASSWORD SECURITY" wrappingWidth="163.31103515625">
          <font>
             <Font name="System Bold" size="13.0" />
@@ -21,10 +21,15 @@
          <children>
             <Text fx:id="percentageText" fill="#fff5f5" layoutX="37.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0%">
                <font>
-                  <Font size="54.0" />
+                  <Font name="System Bold" size="54.0" />
                </font>
             </Text>
          </children>
       </Pane>
+      <Text fx:id="versionText" layoutX="77.0" layoutY="7.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-031221">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

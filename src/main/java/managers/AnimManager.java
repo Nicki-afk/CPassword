@@ -37,6 +37,8 @@ public class AnimManager extends Thread{
                 increment = 5;
             }else if(sum < 100){
                 increment = 4;
+            }else if(sum == 100){
+                increment = 2;
             }
 
 
