@@ -14,16 +14,10 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import logic.Password;
+import managers.WinManager;
 
 
 public class Controller {
-
-    @FXML
-    private ResourceBundle resources;
-
-    @FXML
-    private URL location;
-
     @FXML
     private Pane mainPane;
 
@@ -34,9 +28,6 @@ public class Controller {
     private TextField recommendedPassword;
 
     @FXML
-    private Button CopyButton;
-
-    @FXML
     private Button exitButton;
 
     @FXML
@@ -45,8 +36,21 @@ public class Controller {
     @FXML
     private Text versionText;
 
+    @FXML
+    private Button copyButton;
+
+    @FXML
+    private Button reloadButton;
+
+    @FXML
+    private Button saveButton;
+
+    @FXML
+    private Button getButton;
+
 
     private Password password;
+
 
     @FXML
     void initialize() {
@@ -71,7 +75,7 @@ public class Controller {
         });
 
 
-        CopyButton.setOnAction(new EventHandler<ActionEvent>() {
+        copyButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
@@ -95,6 +99,30 @@ public class Controller {
             }
         });
 
+
+        reloadButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                recommendedPassword.setText(new Password().generatePassword());
+            }
+        });
+
+
+
+
+        saveButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+
+                saveButton.getScene().getWindow().hide();
+                WinManager.loadWindow("/fxml/sinWindow.fxml");
+
+
+
+            }
+        });
 
 
 
