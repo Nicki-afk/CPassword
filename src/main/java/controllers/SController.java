@@ -1,5 +1,6 @@
 package controllers;
 
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,9 +12,9 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import logic.PSystem;
-import managers.WinManager;
+import managers.FileManager;
 
-public class LController {
+public class SController {
 
     @FXML
     private ResourceBundle resources;
@@ -28,24 +29,27 @@ public class LController {
     private Text versionText;
 
     @FXML
+    private TextField nameFiled;
+
+    @FXML
+    private TextField firstNameFiled;
+
+    @FXML
+    private TextField eMailFiled;
+
+    @FXML
     private TextField codeWordFiled;
 
     @FXML
-    private Button logInButton;
-
-    @FXML
-    private Button sinInButton;
-
-    @FXML
-    private Text ForgotText;
+    private Button sinUpButton;
 
     @FXML
     private Button exitButton;
 
     @FXML
     void initialize() {
-
         versionText.setText(PSystem.getVersion());
+
 
 
         exitButton.setOnAction(new EventHandler<ActionEvent>() {
@@ -55,15 +59,29 @@ public class LController {
             }
         });
 
-        sinInButton.setOnAction(new EventHandler<ActionEvent>() {
+
+        sinUpButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
-                sinInButton.getScene().getWindow().hide();
-                WinManager.loadWindow("/fxml/sinUpWindow.fxml");
+
+                String[]arr = {
+
+                        nameFiled.getText() ,
+                        firstNameFiled.getText() ,
+                        eMailFiled.getText()
+
+                };
+
+                FileManager fileManager = new FileManager(arr);
+                fileManager.createUser();
+                sinUpButton.getScene().getWindow().hide();
+
+
+
+
+
             }
         });
-
-
 
     }
 }

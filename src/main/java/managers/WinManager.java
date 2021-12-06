@@ -20,7 +20,7 @@ public class WinManager {
         try {
 
             Stage stage = new Stage();
-            Pane pane = FXMLLoader.load(WinManager.class.getResource("/fxml/sinWindow.fxml"));
+            Pane pane = FXMLLoader.load(WinManager.class.getResource(fxml));
             Scene scene = new Scene(pane , Color.TRANSPARENT);
             stage.setScene(scene);
             stage.initStyle(StageStyle.TRANSPARENT);

@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import logic.Password;
+import managers.FileManager;
 
 public class MainClass extends Application {
 
@@ -16,9 +17,7 @@ public class MainClass extends Application {
 
         launch();
 
-
-
-
+       // FileManager manager = new FileManager(new String[]{"JOHN" , "BERS" , "simplemail@mail.ru"});
 
 
     }

@@ -13,6 +13,7 @@ import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import logic.PSystem;
 import logic.Password;
 import managers.WinManager;
 
@@ -54,6 +55,8 @@ public class Controller {
 
     @FXML
     void initialize() {
+
+        versionText.setText(PSystem.getVersion());
 
         recommendedPassword.setText(new Password().generatePassword());
 
