@@ -2,9 +2,8 @@ package managers;
 
 import logic.PSystem;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
+import java.io.*;
+import java.util.Scanner;
 
 public class FileManager {
 
@@ -19,6 +18,8 @@ public class FileManager {
 
     }
 
+    public FileManager(){}
+
 
 
     public boolean createUser(){
@@ -32,6 +33,8 @@ public class FileManager {
 
                 file.mkdir();
                 file = new File("user/user.txt");
+                file.createNewFile();
+                file = new File("user/word.txt");
                 file.createNewFile();
             }else{
                 return true;
@@ -64,6 +67,60 @@ public class FileManager {
 
     }
 
+
+    private String format(String s){
+
+        return s.substring(s.indexOf("{")+1 , s.indexOf("}")).trim();
+
+    }
+
+
+    public String read(){
+
+        try(
+                BufferedReader reader = new BufferedReader(new FileReader("user/word.txt"))
+
+                ){
+
+
+            String x = reader.readLine();
+            return format(x);
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    public boolean write(byte[]arr){
+
+        try(
+
+                BufferedWriter writer = new BufferedWriter(new FileWriter("user/word.txt"))
+
+
+                ){
+
+            writer.write("CODE_WORD : { ");
+
+            for(byte i : arr){
+
+                writer.write(i + "/");
+
+            }
+
+            writer.write(" }");
+            writer.flush();
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return false;
+
+    }
 
 
 

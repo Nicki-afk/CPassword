@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import logic.Encrypt;
 import logic.PSystem;
 import managers.FileManager;
 
@@ -73,15 +74,16 @@ public class SController {
                 };
 
                 FileManager fileManager = new FileManager(arr);
-                fileManager.createUser();
+                fileManager.createUser(); Encrypt encrypt = new Encrypt(codeWordFiled.getText());
+                encrypt.encrypt();
                 sinUpButton.getScene().getWindow().hide();
-
-
-
 
 
             }
         });
+
+
+
 
     }
 }

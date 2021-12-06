@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
+import logic.Encrypt;
 import logic.PSystem;
 import managers.WinManager;
 
@@ -60,6 +61,21 @@ public class LController {
             public void handle(ActionEvent event) {
                 sinInButton.getScene().getWindow().hide();
                 WinManager.loadWindow("/fxml/sinUpWindow.fxml");
+            }
+        });
+
+        logInButton.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+
+                Encrypt encrypt = new Encrypt();
+                if(encrypt.decrypt(codeWordFiled.getText())){
+
+                    logInButton.getScene().getWindow().hide();
+
+                }
+
+
             }
         });
 
