@@ -123,6 +123,19 @@ public class FileManager {
     }
 
 
+    public boolean filesExists(){
+
+
+        if(!new File("user/user.txt").exists() &&! new File("user/word.txt").exists()){
+            return false;
+
+        }else {
+
+            return true;
+        }
+
+    }
+
 
 
 

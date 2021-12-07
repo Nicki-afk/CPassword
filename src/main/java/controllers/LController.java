@@ -72,6 +72,14 @@ public class LController {
                 if(encrypt.decrypt(codeWordFiled.getText())){
 
                     logInButton.getScene().getWindow().hide();
+                    WinManager.loadWindow("/fxml/savePWindow.fxml");
+
+                }else{
+
+                    codeWordFiled.setStyle(
+                            "-fx-border-color :  #ed6a6a; -fx-background-color :  #C0C0C0; " +
+                                    "-fx-border-radius : 4; -fx-background-radius : 4"
+                    );
 
                 }
 

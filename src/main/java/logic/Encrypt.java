@@ -2,6 +2,7 @@ package logic;
 
 import managers.FileManager;
 
+import java.io.File;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -46,39 +47,43 @@ public class Encrypt {
 
     public boolean decrypt(String word){
 
+        if(!new FileManager().filesExists()){
+            return false;
+        }else {
 
-        byte[]salt = new byte[32];
-        try {
 
-            MessageDigest digest = MessageDigest.getInstance("SHA-512");
-            digest.update(salt); FileManager fileManager = new FileManager();
-            Byte[] inWord = ArrayUtils.toObject(digest.digest(word.getBytes(StandardCharsets.UTF_8)));
-            ArrayList<Byte>bytes = new ArrayList<>();
+            byte[] salt = new byte[32];
+            try {
 
-            Scanner scanner = new Scanner(fileManager.read()).useDelimiter("/");
+                MessageDigest digest = MessageDigest.getInstance("SHA-512");
+                digest.update(salt);
+                FileManager fileManager = new FileManager();
+                Byte[] inWord = ArrayUtils.toObject(digest.digest(word.getBytes(StandardCharsets.UTF_8)));
+                ArrayList<Byte> bytes = new ArrayList<>();
 
-            while (scanner.hasNext()){
+                Scanner scanner = new Scanner(fileManager.read()).useDelimiter("/");
 
-                bytes.add(scanner.nextByte());
+                while (scanner.hasNext()) {
 
+                    bytes.add(scanner.nextByte());
+
+                }
+
+
+                Byte[] codeWord = bytes.toArray(new Byte[bytes.size()]);
+
+                return Arrays.equals(inWord, codeWord);
+
+
+            } catch (Exception e) {
+//                e.printStackTrace();
+
+                return false;
             }
 
-
-            Byte[]codeWord = bytes.toArray(new Byte[bytes.size()]);
-
-            return Arrays.equals(inWord , codeWord);
-
-
-
-
-
-
-        }catch (Exception e){
-            e.printStackTrace();
         }
 
 
-        return false;
 
     }
 

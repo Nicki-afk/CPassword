@@ -6,7 +6,7 @@ import java.util.Date;
 public class PSystem {
 
 
-    private static final String version = "version-0.0.0.1-061221";
+    private static final String version = "version-0.0.0.1-071221";
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:mm:yy");
     public static String DATE = dateFormat.format(new Date());
 
