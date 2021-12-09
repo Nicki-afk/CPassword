@@ -8,27 +8,35 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="mainPane" prefHeight="340.0" prefWidth="217.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LController">
+<Pane fx:id="mainPane" prefHeight="261.0" prefWidth="217.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LController">
    <children>
-      <Text fx:id="versionText" layoutX="77.0" layoutY="7.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-051221">
-         <font>
-            <Font size="6.0" />
-         </font>
-      </Text>
-      <Text fill="WHITE" layoutX="36.0" layoutY="140.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WRITE CODE WORD">
+      <Text fill="WHITE" layoutX="39.0" layoutY="128.0" strokeType="OUTSIDE" strokeWidth="0.0" text="WRITE CODE WORD">
          <font>
             <Font name="System Bold" size="15.0" />
          </font>
       </Text>
-      <TextField fx:id="codeWordFiled" alignment="CENTER" layoutX="35.0" layoutY="156.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
-      <Button fx:id="logInButton" layoutX="79.0" layoutY="197.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="LOG IN" textFill="WHITE" />
-      <ImageView fitHeight="87.0" fitWidth="116.0" layoutX="62.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+      <TextField fx:id="codeWordFiled" alignment="CENTER" layoutX="38.0" layoutY="142.0" prefHeight="27.0" prefWidth="142.0" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
+      <Button fx:id="logInButton" layoutX="37.0" layoutY="174.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="LOG IN" textFill="WHITE">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="sinInButton" layoutX="112.0" layoutY="174.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="SIN IN" textFill="WHITE">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font></Button>
+      <Button fx:id="exitButton" layoutX="79.0" layoutY="214.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #A9A9A9; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a">
+         <font>
+            <Font name="Consolas Bold" size="12.0" />
+         </font></Button>
+      <ImageView fitHeight="87.0" fitWidth="116.0" layoutX="67.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/code_Word.png" />
          </image>
       </ImageView>
-      <Button fx:id="sinInButton" layoutX="79.0" layoutY="227.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="SIN IN" textFill="WHITE" />
-      <Text fx:id="ForgotText" fill="#006aff" layoutX="24.0" layoutY="322.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Forgot your code word? With us" underline="true" />
-      <Button fx:id="exitButton" layoutX="79.0" layoutY="258.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #A9A9A9; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <Text fx:id="versionText" fill="WHITE" layoutX="80.0" layoutY="7.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-051221">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

@@ -17,8 +17,9 @@ public class Encrypt {
     private byte[]code_word;
     private MessageDigest digest ;
     private byte[]salt = new byte[32];
+    private static Encrypt encrypt;
 
-    public Encrypt(String data){
+    private Encrypt(String data){
 
         this.data = data;
 
@@ -37,7 +38,20 @@ public class Encrypt {
     public Encrypt(){}
 
 
+    public static Encrypt getInstance(String word){
+
+        return encrypt == null ? encrypt = new Encrypt(word) : encrypt;
+
+    }
+
+
+
+
+
+
+
     public boolean encrypt(){
+
 
         FileManager manager = new FileManager();
         manager.write(code_word);
@@ -72,11 +86,19 @@ public class Encrypt {
 
                 Byte[] codeWord = bytes.toArray(new Byte[bytes.size()]);
 
-                return Arrays.equals(inWord, codeWord);
+
+                if(Arrays.equals(inWord, codeWord)){
+                    this.code_word = ArrayUtils.toPrimitive(codeWord);
+                    return true;
+
+                }else{
+                    return false;
+                }
+
 
 
             } catch (Exception e) {
-//                e.printStackTrace();
+
 
                 return false;
             }

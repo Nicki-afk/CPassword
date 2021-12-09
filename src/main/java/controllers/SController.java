@@ -74,7 +74,7 @@ public class SController {
                 };
 
                 FileManager fileManager = new FileManager(arr);
-                fileManager.createUser(); Encrypt encrypt = new Encrypt(codeWordFiled.getText());
+                fileManager.createUser(); Encrypt encrypt = Encrypt.getInstance(codeWordFiled.getText());
                 encrypt.encrypt();
 
 

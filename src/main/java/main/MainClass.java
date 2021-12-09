@@ -7,11 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
-import logic.Encrypt;
-import logic.Password;
-import managers.FileManager;
 
-import java.util.Scanner;
 
 public class MainClass extends Application {
 

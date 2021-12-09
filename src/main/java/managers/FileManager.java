@@ -3,6 +3,7 @@ package managers;
 import logic.PSystem;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class FileManager {
@@ -96,6 +97,7 @@ public class FileManager {
 
     public boolean write(byte[]arr){
 
+
         try(
 
                 BufferedWriter writer = new BufferedWriter(new FileWriter("user/word.txt"))
@@ -134,6 +136,60 @@ public class FileManager {
             return true;
         }
 
+    }
+
+    public boolean writePassword(String[]data){
+
+
+        File file = new File("user/passwords.txt");
+        ArrayList<String>arr = new ArrayList<>();
+
+
+        try{
+
+
+            if(!file.exists()){
+                file.createNewFile();
+            }else{
+
+                try(
+                        BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+                        BufferedReader reader = new BufferedReader(new FileReader(file))
+
+                        ){
+
+
+
+
+
+
+
+
+                }catch (Exception e){
+
+                    e.printStackTrace();
+                }
+
+
+
+
+
+
+            }
+
+
+
+
+
+
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+
+        return false;
     }
 
 
