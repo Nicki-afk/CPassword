@@ -89,7 +89,7 @@ public class Controller {
                     // set clipboard content
                     Clipboard.getSystemClipboard().setContent(clipboardContent);
 
-                    recommendedPassword.setStyle("-fx-border-color: #00FF7F; -fx-text-fill : #00FF7F; -fx-background-color : #C0C0C0; -fx-border-radius : 4;");
+                    recommendedPassword.setStyle("-fx-border-color: #00FF7F; -fx-text-fill : #00FF7F; -fx-background-color : #2A2A27; -fx-border-radius : 4;");
 
 
 
@@ -108,6 +108,9 @@ public class Controller {
             public void handle(ActionEvent event) {
 
                 recommendedPassword.setText(new Password().generatePassword());
+                recommendedPassword.setStyle("-fx-border-color: white; -fx-text-fill : white; -fx-background-color : #2A2A27; -fx-border-radius : 4;");
+
+
             }
         });
 

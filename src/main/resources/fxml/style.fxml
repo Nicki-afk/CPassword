@@ -8,12 +8,12 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="mainPane" prefHeight="261.0" prefWidth="218.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
+<Pane fx:id="mainPane" prefHeight="284.0" prefWidth="218.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.Controller">
    <children>
-      <TextField fx:id="passworUser" alignment="CENTER" layoutX="15.0" layoutY="149.0" prefHeight="27.0" prefWidth="186.0" promptText="WRITE PASSWORD" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
-      <TextField fx:id="recommendedPassword" alignment="CENTER" editable="false" layoutX="16.0" layoutY="185.0" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #C0C0C0; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
-      <Button fx:id="exitButton" layoutX="16.0" layoutY="222.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #A9A9A9; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
-      <Button fx:id="copyButton" layoutX="165.0" layoutY="185.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="36.0" style="-fx-background-color: #A9A9A9; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;">
+      <TextField fx:id="passworUser" alignment="CENTER" layoutX="16.0" layoutY="168.0" prefHeight="27.0" prefWidth="186.0" promptText="WRITE PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
+      <TextField fx:id="recommendedPassword" alignment="CENTER" editable="false" layoutX="16.0" layoutY="198.0" prefHeight="28.0" prefWidth="109.0" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
+      <Button fx:id="exitButton" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #2A2A27; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <Button fx:id="copyButton" layoutX="166.0" layoutY="198.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="36.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -22,7 +22,7 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="reloadButton" layoutX="127.0" layoutY="185.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="33.0" style="-fx-background-color: #A9A9A9; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;">
+      <Button fx:id="reloadButton" layoutX="127.0" layoutY="198.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="33.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;">
          <graphic>
             <ImageView fitHeight="18.0" fitWidth="18.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -31,26 +31,25 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="saveButton" layoutX="84.0" layoutY="222.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="SAVE" textFill="WHITE" />
-      <Button fx:id="getButton" layoutX="148.0" layoutY="222.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="GET" textFill="WHITE" />
-      <Pane prefHeight="133.0" prefWidth="218.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4;">
-         <children>
-            <Text fx:id="percentageText" fill="#fff5f5" layoutX="70.0" layoutY="88.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0%">
-               <font>
-                  <Font name="System Bold" size="54.0" />
-               </font>
-            </Text>
-            <Text fill="WHITE" layoutX="7.0" layoutY="18.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PERCENTAGE PASSWORD SECURITY" textAlignment="CENTER" wrappingWidth="203.31103515625">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Text>
-            <Text fx:id="versionText" fill="WHITE" layoutX="148.0" layoutY="126.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-051221">
-               <font>
-                  <Font size="6.0" />
-               </font>
-            </Text>
-         </children>
-      </Pane>
+      <Button fx:id="saveButton" layoutX="142.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #2A2A27; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="SAVE" textFill="WHITE" />
+      <Button fx:id="getButton" layoutX="85.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: #2A2A27; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="GET" textFill="WHITE" />
+      <Text fx:id="percentageText" fill="#fff5f5" layoutX="73.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0%">
+         <font>
+            <Font name="System Bold" size="54.0" />
+         </font>
+      </Text>
+      <Text fill="WHITE" layoutX="7.0" layoutY="39.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PERCENTAGE PASSWORD SECURITY" textAlignment="CENTER" wrappingWidth="203.31103515625">
+         <font>
+            <Font name="System Bold" size="10.0" />
+         </font>
+      </Text>
+      <Text fx:id="versionText" fill="WHITE" layoutX="82.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-051221">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Text>
+      <Pane layoutX="39.0" layoutY="149.0" prefHeight="3.0" prefWidth="140.0" style="-fx-background-color: white; -fx-background-radius: 4;" />
+      <Pane prefHeight="8.0" prefWidth="218.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 4;" />
+      <Pane layoutY="2.0" prefHeight="8.0" prefWidth="218.0" style="-fx-background-color: #DCDCDC;" />
    </children>
 </Pane>

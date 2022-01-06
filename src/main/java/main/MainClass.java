@@ -7,6 +7,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import managers.CryptoManager;
 
 
 public class MainClass extends Application {
@@ -14,8 +15,11 @@ public class MainClass extends Application {
 
     public static void main(String[] args) {
 
-        launch();
+       // launch();
 
+        CryptoManager manager = new CryptoManager();
+        manager.init();
+        manager.getItSalt();
 
 
 

@@ -2,14 +2,13 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
+import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
+import javafx.scene.text.Text;
 
 public class SPController {
 
@@ -23,31 +22,25 @@ public class SPController {
     private Pane mainPane;
 
     @FXML
-    private TextField namePassword;
+    private Text versionText;
 
     @FXML
-    private TextField linkPassword;
+    private TextField namePasswordFiled;
 
     @FXML
-    private PasswordField passwordFiled;
-
-    @FXML
-    private Button saveButton;
+    private Button sinUpButton;
 
     @FXML
     private Button exitButton;
 
     @FXML
+    private PasswordField passwordFiled;
+
+    @FXML
+    private TableView<?> table;
+
+    @FXML
     void initialize() {
-
-        exitButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-
 
     }
 }

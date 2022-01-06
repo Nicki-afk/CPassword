@@ -1,6 +1,5 @@
 package controllers;
 
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -11,9 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
-import logic.Encrypt;
 import logic.PSystem;
-import managers.FileManager;
 
 public class SController {
 
@@ -65,17 +62,18 @@ public class SController {
             @Override
             public void handle(ActionEvent event) {
 
-                String[]arr = {
 
-                        nameFiled.getText() ,
-                        firstNameFiled.getText() ,
-                        eMailFiled.getText()
 
-                };
 
-                FileManager fileManager = new FileManager(arr);
-                fileManager.createUser(); Encrypt encrypt = Encrypt.getInstance(codeWordFiled.getText());
-                encrypt.encrypt();
+
+
+//                Encrypt encrypt = new Encrypt();
+//                FileManager fileManager = new FileManager(arr , encrypt.encrypt(codeWordFiled.getText()));
+//                fileManager.createUser(); fileManager.write();
+//
+
+//                Encrypt encrypt = Encrypt.getInstance(codeWordFiled.getText());
+//                encrypt.encrypt();
 
 
                 sinUpButton.getScene().getWindow().hide();

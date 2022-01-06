@@ -6,23 +6,28 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="mainPane" prefHeight="340.0" prefWidth="225.0" style="-fx-background-color: #C0C0C0; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SController">
+<Pane fx:id="mainPane" prefHeight="340.0" prefWidth="466.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SController">
    <children>
-      <Text fx:id="versionText" layoutX="87.0" layoutY="6.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-061221">
+      <Text fx:id="versionText" fill="WHITE" layoutX="194.0" layoutY="332.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-061221">
          <font>
             <Font size="6.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="71.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIN IN">
+      <Text fill="WHITE" layoutX="183.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIN IN">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Text>
-      <TextField fx:id="nameFiled" alignment="CENTER" layoutX="38.0" layoutY="110.0" promptText="name" />
-      <TextField fx:id="firstNameFiled" alignment="CENTER" layoutX="38.0" layoutY="149.0" promptText="firstname" />
-      <TextField fx:id="eMailFiled" alignment="CENTER" layoutX="38.0" layoutY="186.0" promptText="E-mail" />
-      <TextField fx:id="codeWordFiled" alignment="CENTER" layoutX="38.0" layoutY="222.0" promptText="code-word" />
-      <Button fx:id="sinUpButton" layoutX="80.0" layoutY="261.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #A9A9A9; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="SIN UP" textFill="WHITE" />
-      <Button fx:id="exitButton" layoutX="80.0" layoutY="295.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #A9A9A9; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <TextField fx:id="nameFiled" alignment="CENTER" layoutX="149.0" layoutY="100.0" promptText="name" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
+      <TextField fx:id="firstNameFiled" alignment="CENTER" layoutX="149.0" layoutY="139.0" promptText="firstname" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
+      <TextField fx:id="eMailFiled" alignment="CENTER" layoutX="149.0" layoutY="176.0" promptText="E-mail" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
+      <TextField fx:id="codeWordFiled" alignment="CENTER" layoutX="149.0" layoutY="212.0" promptText="code-word" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
+      <Button fx:id="sinUpButton" layoutX="232.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="SIN UP" textFill="WHITE" />
+      <Button fx:id="exitButton" layoutX="151.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: #ed6a6a; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 4;">
+         <children>
+            <Pane layoutY="3.0" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC;" />
+         </children>
+      </Pane>
    </children>
 </Pane>
