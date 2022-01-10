@@ -15,8 +15,8 @@
             <Font size="6.0" />
          </font>
       </Text>
-      <Button fx:id="sinInButton" layoutX="232.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="SIN UP" textFill="WHITE" />
-      <Button fx:id="exitButton" layoutX="151.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: #ed6a6a; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <Button fx:id="sinInButton" layoutX="229.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="SIN UP" textFill="WHITE" />
+      <Button fx:id="exitButton" layoutX="158.0" layoutY="285.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="137.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: #ed6a6a; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
       <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 4;">
          <children>
             <Pane layoutY="3.0" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC;" />
@@ -28,6 +28,6 @@
          </image>
       </ImageView>
       <PasswordField fx:id="codeWordFiled" alignment="CENTER" layoutX="150.0" layoutY="158.0" promptText="code-word" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4; -fx-text-fill: white; -fx-prompt-text-fill: white;" />
-      <Button fx:id="logInButton" layoutX="190.0" layoutY="282.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="LOG IN" textFill="WHITE" />
+      <Button fx:id="logInButton" layoutX="154.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="LOG IN" textFill="WHITE" />
    </children>
 </Pane>

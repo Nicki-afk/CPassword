@@ -11,6 +11,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import logic.PSystem;
+import managers.CryptoManager;
 
 public class SController {
 
@@ -25,15 +26,6 @@ public class SController {
 
     @FXML
     private Text versionText;
-
-    @FXML
-    private TextField nameFiled;
-
-    @FXML
-    private TextField firstNameFiled;
-
-    @FXML
-    private TextField eMailFiled;
 
     @FXML
     private TextField codeWordFiled;
@@ -75,6 +67,9 @@ public class SController {
 //                Encrypt encrypt = Encrypt.getInstance(codeWordFiled.getText());
 //                encrypt.encrypt();
 
+                CryptoManager manager = CryptoManager.getInstance();
+                manager.setData(codeWordFiled.getText());
+                manager.writeCryptoWord();
 
                 sinUpButton.getScene().getWindow().hide();
 

@@ -13,21 +13,28 @@
             <Font size="6.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="183.0" layoutY="72.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIN IN">
+      <Text fill="WHITE" layoutX="192.0" layoutY="73.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SIN IN">
          <font>
             <Font name="System Bold" size="27.0" />
          </font>
       </Text>
-      <TextField fx:id="nameFiled" alignment="CENTER" layoutX="149.0" layoutY="100.0" promptText="name" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
-      <TextField fx:id="firstNameFiled" alignment="CENTER" layoutX="149.0" layoutY="139.0" promptText="firstname" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
-      <TextField fx:id="eMailFiled" alignment="CENTER" layoutX="149.0" layoutY="176.0" promptText="E-mail" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
-      <TextField fx:id="codeWordFiled" alignment="CENTER" layoutX="149.0" layoutY="212.0" promptText="code-word" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
-      <Button fx:id="sinUpButton" layoutX="232.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="SIN UP" textFill="WHITE" />
-      <Button fx:id="exitButton" layoutX="151.0" layoutY="249.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: #ed6a6a; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <TextField fx:id="codeWordFiled" alignment="CENTER" layoutX="157.0" layoutY="164.0" promptText="CODE_WORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
+      <Button fx:id="sinUpButton" layoutX="158.0" layoutY="198.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="SIN UP" textFill="WHITE" />
+      <Button fx:id="exitButton" layoutX="158.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="151.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: #ed6a6a; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
       <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 4;">
          <children>
             <Pane layoutY="3.0" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC;" />
          </children>
       </Pane>
+      <Text fill="WHITE" layoutX="31.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Come up with a code word that you will enter when entering the program" textAlignment="CENTER" wrappingWidth="402.50262451171875">
+         <font>
+            <Font name="Consolas" size="12.0" />
+         </font>
+      </Text>
+      <Text fill="#c0ba0f" layoutX="32.0" layoutY="284.0" strokeType="OUTSIDE" strokeWidth="0.0" text="ATTENTION! IF YOU FORGET THE CODE WORD, PASSWORD ACCESS WILL BE IMPOSSIBLE TO OBTAIN" textAlignment="CENTER" wrappingWidth="402.50262451171875">
+         <font>
+            <Font name="Consolas" size="10.0" />
+         </font>
+      </Text>
    </children>
 </Pane>

@@ -65,20 +65,20 @@ public class LController {
             @Override
             public void handle(ActionEvent event) {
 
-                Crypto crypto = new Crypto();
-                if(crypto.isCodeWord(codeWordFiled.getText())){
-
-                    logInButton.getScene().getWindow().hide();
-                    WinManager.loadWindow("/fxml/savePWindow.fxml");
-
-                }else{
-
-                    codeWordFiled.setStyle(
-                            "-fx-border-color :  #ed6a6a; -fx-background-color :  #2A2A27; " +
-                                    "-fx-border-radius : 4; -fx-background-radius : 4; -fx-text-fill : #ed6a6a;"
-                    );
-
-                }
+//                Crypto crypto = new Crypto();
+//                if(crypto.isCodeWord(codeWordFiled.getText())){
+//
+//                    logInButton.getScene().getWindow().hide();
+//                    WinManager.loadWindow("/fxml/savePWindow.fxml");
+//
+//                }else{
+//
+//                    codeWordFiled.setStyle(
+//                            "-fx-border-color :  #ed6a6a; -fx-background-color :  #2A2A27; " +
+//                                    "-fx-border-radius : 4; -fx-background-radius : 4; -fx-text-fill : #ed6a6a;"
+//                    );
+//
+//                }
 
 
             }

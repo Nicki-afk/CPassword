@@ -24,6 +24,7 @@ public class CryptoManager extends Crypto{
 
 
 
+
     private CryptoManager(String data){
 
         super(data);
@@ -33,7 +34,7 @@ public class CryptoManager extends Crypto{
     }
 
     private CryptoManager(){
-
+        super();
         salt = initSalt();
     }
 
@@ -49,78 +50,12 @@ public class CryptoManager extends Crypto{
     }
 
 
-
-    public byte[] getItSalt(){
-
-
-        ArrayList<Byte>bytes = new ArrayList<>();
-
-        String salt = records.get(0).substring(1 , records.get(0).length()-1);
-        System.out.println(salt);
-        Scanner scanner = new Scanner(salt).useDelimiter("/");
-
-        while (scanner.hasNext()){
-
-            bytes.add(scanner.nextByte());
-        }
-
-        byte[]saltBytes = ArrayUtils.toPrimitive(bytes.toArray(new Byte[bytes.size()]));
-
-        return saltBytes;
-
+    @Override
+    protected boolean isCodeWord(String word) {
+        return false;
     }
 
-
-
-    public void init(){
-
-
-        try {
-
-            File file = new File("user");
-
-
-            if (!file.exists()) {
-                file.mkdir();
-                file = new File("user\\base.txt");
-                file.createNewFile();
-               // writeBytes("user/base.txt" , initSalt());
-                writeBytes("user/base.txt" , salt);
-            }else{
-                read("user/base.txt");
-                salt = getItSalt();
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
-
-
-    public void read(String filePath){
-
-
-        try(
-
-                BufferedReader reader = new BufferedReader(new FileReader(filePath));
-
-        ){
-
-            String i = "";
-            while ((i = reader.readLine()) != null){
-
-                System.out.println(i);
-                records.add(i);
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-
-    }
-
+    @Override
     public void writeBytes(String file , byte[]data){
 
 
@@ -129,7 +64,7 @@ public class CryptoManager extends Crypto{
                 BufferedWriter writer = new BufferedWriter(new FileWriter(file))
 
 
-                ){
+        ){
             writer.write("{");
 
             for(int i = 0; i < data.length; i++){
@@ -149,13 +84,60 @@ public class CryptoManager extends Crypto{
 
     }
 
+    @Override
+    public byte[] getItSalt(){
+
+
+        ArrayList<Byte>bytes = new ArrayList<>();
+        String salt = records.get(0).substring(1 , records.get(0).length()-1);
+        System.out.println(salt);
+        Scanner scanner = new Scanner(salt).useDelimiter("/");
+
+        while (scanner.hasNext()){
+
+            bytes.add(scanner.nextByte());
+        }
+
+        byte[]saltBytes = ArrayUtils.toPrimitive(bytes.toArray(new Byte[bytes.size()]));
+
+        return saltBytes;
+
+    }
+
+    @Override
+    public void init(){
+
+
+        try {
+
+            File file = new File("user");
+
+
+            if (!file.exists()) {
+                file.mkdir();
+                file = new File("user\\base.txt");
+                file.createNewFile();
+                // writeBytes("user/base.txt" , initSalt());
+                writeBytes("user/base.txt" , salt);
+            }else{
+                read("user/base.txt");
+                salt = getItSalt();
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
+    @Override
     public void writeCryptoWord(){
 
         try(
                 BufferedWriter writer = new BufferedWriter(new FileWriter("user/base.txt"))
 
 
-                ){
+        ){
 
 
 
@@ -191,6 +173,44 @@ public class CryptoManager extends Crypto{
 
 
     }
+
+    @Override
+    public void writeCryptoPass(){
+
+
+        // ...
+    }
+
+
+
+
+
+
+
+    public void read(String filePath){
+
+
+        try(
+                BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        ){
+
+            String i = "";
+            while ((i = reader.readLine()) != null){
+
+                System.out.println(i);
+                records.add(i);
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+
+    }
+
+
+
+
 
 
     public byte[] getSalt() {

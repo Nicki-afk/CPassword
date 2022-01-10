@@ -5,7 +5,7 @@ import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
 
-public class Crypto {
+public abstract class Crypto {
 
 
     private String data;
@@ -15,16 +15,15 @@ public class Crypto {
     private SecureRandom random = new SecureRandom();
     private static Crypto crypto;
 
-    protected Crypto(String data){
+     public Crypto(String data){
 
         this.data = data;
 
-    }
+     }
+     public Crypto(){}
 
-    public Crypto(){
 
 
-    }
 
     protected  byte[] initSalt(){
 
@@ -34,11 +33,6 @@ public class Crypto {
 
         return salt;
     }
-
-
-
-
-
 
 
     // Add methods
@@ -70,7 +64,20 @@ public class Crypto {
 
     }
 
-    public  boolean isCodeWord(String word){
+    // abstract methods
+
+    protected abstract boolean isCodeWord(String word);
+    protected abstract void writeBytes(String file, byte[] data);
+    protected abstract byte[]getItSalt();
+    protected abstract void init();
+    protected abstract void writeCryptoWord();
+    protected abstract void writeCryptoPass();
+
+    public void setCryptoData(String data) {
+        this.data = data;
+    }
+}
+
 
 //        if(!new FileManager().filesExists()){
 //            return false;
@@ -86,7 +93,7 @@ public class Crypto {
 //                Byte[] inWord = ArrayUtils.toObject(digest.digest(word.getBytes(StandardCharsets.UTF_8)));
 //             -   ArrayList<Byte> bytes = new ArrayList<>();
 
-                    // if(this.records.size() < 2)
+// if(this.records.size() < 2)
 //
 //                // this string to FileManager
 //                Scanner scanner = new Scanner(fileManager.read()).useDelimiter("/");
@@ -119,12 +126,3 @@ public class Crypto {
 //
 //        }
 
-
-        return false;
-
-    }
-
-    public void setCryptoData(String data) {
-        this.data = data;
-    }
-}
