@@ -48,6 +48,10 @@ public class Crypto {
 
     // rewrite ...
     // return statement remake to byte[]arr
+
+
+
+
     protected byte[] encrypt(String inWord , byte[]salt){
 
         try {
@@ -73,14 +77,16 @@ public class Crypto {
 //        }else {
 //
 //
-//            byte[] salt = new byte[32];
+//           - byte[] salt = new byte[32]; -\
 //            try {
 //
 //                MessageDigest digest = MessageDigest.getInstance("SHA-512");
-//                digest.update(salt);
+//                digest.update(this.salt);
 //                FileManager fileManager = new FileManager();
 //                Byte[] inWord = ArrayUtils.toObject(digest.digest(word.getBytes(StandardCharsets.UTF_8)));
-//                ArrayList<Byte> bytes = new ArrayList<>();
+//             -   ArrayList<Byte> bytes = new ArrayList<>();
+
+                    // if(this.records.size() < 2)
 //
 //                // this string to FileManager
 //                Scanner scanner = new Scanner(fileManager.read()).useDelimiter("/");
@@ -118,8 +124,7 @@ public class Crypto {
 
     }
 
-
-
-
-
+    public void setCryptoData(String data) {
+        this.data = data;
+    }
 }

@@ -15,11 +15,10 @@ public class MainClass extends Application {
 
     public static void main(String[] args) {
 
-       // launch();
 
-        CryptoManager manager = new CryptoManager();
-        manager.init();
-        manager.getItSalt();
+
+            launch();
+
 
 
 

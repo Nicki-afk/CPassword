@@ -14,6 +14,9 @@ public class WinManager {
 
 
 
+    // gui -> controller -> processing
+
+
 
     public static void loadWindow(String fxml){
 

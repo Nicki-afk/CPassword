@@ -12,7 +12,7 @@
    <children>
       <TextField fx:id="passworUser" alignment="CENTER" layoutX="16.0" layoutY="168.0" prefHeight="27.0" prefWidth="186.0" promptText="WRITE PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
       <TextField fx:id="recommendedPassword" alignment="CENTER" editable="false" layoutX="16.0" layoutY="198.0" prefHeight="28.0" prefWidth="109.0" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" />
-      <Button fx:id="exitButton" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="65.0" style="-fx-background-color: #2A2A27; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
+      <Button fx:id="exitButton" layoutX="16.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="44.0" style="-fx-background-color: #2A2A27; -fx-border-color: #ed6a6a; -fx-background-radius: 4; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
       <Button fx:id="copyButton" layoutX="166.0" layoutY="198.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="36.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;">
          <graphic>
             <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -31,8 +31,10 @@
             </ImageView>
          </graphic>
       </Button>
-      <Button fx:id="saveButton" layoutX="142.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="60.0" style="-fx-background-color: #2A2A27; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="SAVE" textFill="WHITE" />
-      <Button fx:id="getButton" layoutX="85.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="54.0" style="-fx-background-color: #2A2A27; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="GET" textFill="WHITE" />
+      <Button fx:id="passManagerButton" layoutX="62.0" layoutY="229.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="140.0" style="-fx-background-color: #2A2A27; -fx-border-color: WHITE; -fx-background-radius: 4; -fx-border-radius: 4;" text="PASSWORD MANAGER" textFill="WHITE">
+         <font>
+            <Font size="11.0" />
+         </font></Button>
       <Text fx:id="percentageText" fill="#fff5f5" layoutX="73.0" layoutY="116.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0%">
          <font>
             <Font name="System Bold" size="54.0" />

@@ -13,20 +13,41 @@ public class CryptoManager extends Crypto{
 
 
 
+    // Nicki-afk
+
     private ArrayList<String>records = new ArrayList<>();
 
     private String data;
     private byte[]salt;
 
+    public static CryptoManager cryptoManager;
 
 
-    public CryptoManager(String data){
+
+    private CryptoManager(String data){
 
         super(data);
         this.data = data;
+        salt = initSalt();
 
     }
-    public CryptoManager(){}
+
+    private CryptoManager(){
+
+        salt = initSalt();
+    }
+
+
+    public static CryptoManager getInstance(String data){
+
+        return cryptoManager == null ? cryptoManager = new CryptoManager(data) : cryptoManager;
+    }
+
+    public static CryptoManager getInstance(){
+
+        return cryptoManager == null ? cryptoManager = new CryptoManager() : cryptoManager;
+    }
+
 
 
     public byte[] getItSalt(){
@@ -58,11 +79,13 @@ public class CryptoManager extends Crypto{
 
             File file = new File("user");
 
+
             if (!file.exists()) {
                 file.mkdir();
                 file = new File("user\\base.txt");
                 file.createNewFile();
-                writeBytes("user/base.txt" , initSalt());
+               // writeBytes("user/base.txt" , initSalt());
+                writeBytes("user/base.txt" , salt);
             }else{
                 read("user/base.txt");
                 salt = getItSalt();
@@ -71,8 +94,6 @@ public class CryptoManager extends Crypto{
         }catch (Exception e){
             e.printStackTrace();
         }
-
-
 
     }
 
@@ -136,17 +157,29 @@ public class CryptoManager extends Crypto{
 
                 ){
 
-            //records.add(encrypt(this.data ));
 
-            writer.write("{");
+
+            // add method genRecord()
+            byte[]recordBytes = encrypt(this.data , salt);
+            String record = "{";
+
+            for(byte i : recordBytes){
+
+                record += i + "/";
+            }
+
+            record+= "}\n";
+
+            records.add(record);
+
+
 
             for(int x = 0; x < records.size(); x++){
 
-                writer.write(records.get(x) + "/");
+                writer.write(records.get(x) + "\n");
 
             }
 
-            writer.write("}\n");
             writer.flush();
 
 
@@ -162,5 +195,27 @@ public class CryptoManager extends Crypto{
 
     public byte[] getSalt() {
         return salt;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
+        setCryptoData(data);
+    }
+
+
+    public ArrayList<String> getRecords() {
+        return records;
+    }
+
+    public void setRecords(ArrayList<String> records) {
+        this.records = records;
+    }
+
+    public void setSalt(byte[] salt) {
+        this.salt = salt;
     }
 }

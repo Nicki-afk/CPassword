@@ -37,7 +37,6 @@ public class Password extends CPassword {
             public void handle(KeyEvent event) {
 
                 if(event.getCode() == KeyCode.ENTER){
-                    System.out.println("ENTER");
                     setPass(filed.getText());
                     percentage = howStrongIsThePassword();
                     animManager = new AnimManager(text , percentage);

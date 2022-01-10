@@ -15,6 +15,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import logic.PSystem;
 import logic.Password;
+import managers.CryptoManager;
 import managers.WinManager;
 
 
@@ -43,11 +44,9 @@ public class Controller {
     @FXML
     private Button reloadButton;
 
-    @FXML
-    private Button saveButton;
 
     @FXML
-    private Button getButton;
+    private Button passManagerButton;
 
 
     private Password password;
@@ -56,9 +55,15 @@ public class Controller {
     @FXML
     void initialize() {
 
+
+
+
         versionText.setText(PSystem.getVersion());
 
         recommendedPassword.setText(new Password().generatePassword());
+
+        final CryptoManager manager = CryptoManager.getInstance();
+        manager.init();
 
 
         mainPane.setOnMouseEntered(new EventHandler<MouseEvent>() {
@@ -115,20 +120,21 @@ public class Controller {
         });
 
 
-
-
-        saveButton.setOnAction(new EventHandler<ActionEvent>() {
+        passManagerButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
+                if(manager.getRecords().size() < 2){
+                    WinManager.loadWindow("/fxml/sinUpWindow.fxml");
 
-                saveButton.getScene().getWindow().hide();
-                WinManager.loadWindow("/fxml/sinWindow.fxml");
-
-
+                }else {
+                    WinManager.loadWindow("/fxml/sinWindow.fxml");
+                }
 
             }
         });
+
+
 
 
 
