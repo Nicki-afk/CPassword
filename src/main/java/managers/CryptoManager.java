@@ -1,10 +1,12 @@
 package managers;
 
 
+import com.sun.org.apache.regexp.internal.RE;
 import logic.Crypto;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.*;
+import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -119,8 +121,9 @@ public class CryptoManager extends Crypto{
                 file.createNewFile();
                 // writeBytes("user/base.txt" , initSalt());
                 writeBytes("user/base.txt" , salt);
+                readRecords("user/base.txt");
             }else{
-                read("user/base.txt");
+                readRecords("user/base.txt");
                 salt = getItSalt();
             }
 
@@ -150,9 +153,11 @@ public class CryptoManager extends Crypto{
                 record += i + "/";
             }
 
-            record+= "}\n";
+            record+= "}";
+
 
             records.add(record);
+
 
 
 
@@ -163,7 +168,6 @@ public class CryptoManager extends Crypto{
             }
 
             writer.flush();
-
 
         }catch (Exception e){
 
@@ -187,7 +191,7 @@ public class CryptoManager extends Crypto{
 
 
 
-    public void read(String filePath){
+    public void readRecords(String filePath){
 
 
         try(

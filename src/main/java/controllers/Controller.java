@@ -51,6 +51,8 @@ public class Controller {
 
     private Password password;
 
+    private CryptoManager manager = CryptoManager.getInstance();
+
 
     @FXML
     void initialize() {
@@ -62,7 +64,7 @@ public class Controller {
 
         recommendedPassword.setText(new Password().generatePassword());
 
-        final CryptoManager manager = CryptoManager.getInstance();
+
         manager.init();
 
 
@@ -126,9 +128,12 @@ public class Controller {
 
                 if(manager.getRecords().size() < 2){
                     WinManager.loadWindow("/fxml/sinUpWindow.fxml");
+                    passManagerButton.getScene().getWindow().hide();
 
                 }else {
                     WinManager.loadWindow("/fxml/sinWindow.fxml");
+                    passManagerButton.getScene().getWindow().hide();
+
                 }
 
             }
