@@ -27,8 +27,8 @@ public class WinManager {
             Scene scene = new Scene(pane , Color.TRANSPARENT);
             stage.setScene(scene);
             stage.initStyle(StageStyle.TRANSPARENT);
-            stage.show();
-            com.sun.glass.ui.Window.getWindows().get(0).setUndecoratedMoveRectangle(22);
+            stage.showAndWait();
+           //com.sun.glass.ui.Window.getWindows().get(0).setUndecoratedMoveRectangle(22);
 
         }catch (IOException e){
             e.printStackTrace();

@@ -1,9 +1,14 @@
 package logic;
 
 
+import org.apache.commons.lang3.ArrayUtils;
+
+import javax.swing.plaf.PanelUI;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 public abstract class Crypto {
 
@@ -63,6 +68,27 @@ public abstract class Crypto {
 
 
     }
+
+
+    public byte[] transformFormat(String s){
+
+         String st = s.substring(1 , s.length()-1);
+
+        Scanner scanner = new Scanner(st).useDelimiter("/");
+        ArrayList<Byte>bytes = new ArrayList<>();
+
+        while (scanner.hasNext()){
+
+            bytes.add(scanner.nextByte());
+
+        }
+
+        byte[]arr = ArrayUtils.toPrimitive(bytes.toArray(new Byte[bytes.size()]));
+
+        return arr;
+
+    }
+
 
     // abstract methods
 

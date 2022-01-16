@@ -6,13 +6,18 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.Clipboard;
 import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 import logic.PSystem;
 import logic.Password;
 import managers.CryptoManager;
@@ -126,14 +131,36 @@ public class Controller {
             @Override
             public void handle(ActionEvent event) {
 
-                if(manager.getRecords().size() < 2){
-                    WinManager.loadWindow("/fxml/sinUpWindow.fxml");
-                    passManagerButton.getScene().getWindow().hide();
+                try {
 
-                }else {
-                    WinManager.loadWindow("/fxml/sinWindow.fxml");
-                    passManagerButton.getScene().getWindow().hide();
+                    if (manager.getRecords().size() < 2) {
+                        passManagerButton.getScene().getWindow().hide();
+//                    WinManager.loadWindow("/fxml/sinUpWindow.fxml");
 
+                        Stage stage = new Stage();
+                        Pane pane = FXMLLoader.load(getClass().getResource("/fxml/sinUpWindow.fxml"));
+                        Scene scene = new Scene(pane, Color.TRANSPARENT);
+                        stage.setScene(scene);
+                        stage.initStyle(StageStyle.TRANSPARENT);
+                        stage.showAndWait();
+
+
+                    } else {
+                        passManagerButton.getScene().getWindow().hide();
+                      //  WinManager.loadWindow("/fxml/sinWindow.fxml");
+
+                        Stage stage = new Stage();
+                        Pane pane = FXMLLoader.load(getClass().getResource("/fxml/sinWindow.fxml"));
+                        Scene scene = new Scene(pane, Color.TRANSPARENT);
+                        stage.setScene(scene);
+                        stage.initStyle(StageStyle.TRANSPARENT);
+                        stage.showAndWait();
+
+
+                    }
+                }catch (Exception e){
+
+                    e.printStackTrace();
                 }
 
             }

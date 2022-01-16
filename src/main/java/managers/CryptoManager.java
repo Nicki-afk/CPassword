@@ -5,9 +5,13 @@ import com.sun.org.apache.regexp.internal.RE;
 import logic.Crypto;
 import org.apache.commons.lang3.ArrayUtils;
 
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.*;
 import java.lang.ref.WeakReference;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class CryptoManager extends Crypto{
@@ -53,7 +57,28 @@ public class CryptoManager extends Crypto{
 
 
     @Override
-    protected boolean isCodeWord(String word) {
+    public boolean isCodeWord(String word) {
+
+        try{
+
+
+            MessageDigest digest = MessageDigest.getInstance("SHA-512");
+            digest.update(salt);
+            byte[]inWord = digest.digest(word.getBytes(StandardCharsets.UTF_8));
+            byte[]codeWord = transformFormat(records.get(1));
+
+
+            return Arrays.equals(inWord , codeWord);
+
+
+        }catch (Exception e){
+
+            e.printStackTrace();
+        }
+
+
+
+
         return false;
     }
 
@@ -91,16 +116,18 @@ public class CryptoManager extends Crypto{
 
 
         ArrayList<Byte>bytes = new ArrayList<>();
-        String salt = records.get(0).substring(1 , records.get(0).length()-1);
-        System.out.println(salt);
-        Scanner scanner = new Scanner(salt).useDelimiter("/");
+//        String salt = records.get(0).substring(1 , records.get(0).length()-1);
+//        System.out.println(salt);
+//        Scanner scanner = new Scanner(salt).useDelimiter("/");
+//
+//        while (scanner.hasNext()){
+//
+//            bytes.add(scanner.nextByte());
+//        }
 
-        while (scanner.hasNext()){
+//        byte[]saltBytes = ArrayUtils.toPrimitive(bytes.toArray(new Byte[bytes.size()]));
+        byte[]saltBytes = transformFormat(records.get(0));
 
-            bytes.add(scanner.nextByte());
-        }
-
-        byte[]saltBytes = ArrayUtils.toPrimitive(bytes.toArray(new Byte[bytes.size()]));
 
         return saltBytes;
 

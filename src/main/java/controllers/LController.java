@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import logic.Crypto;
 import logic.PSystem;
+import managers.CryptoManager;
 import managers.WinManager;
 
 public class LController {
@@ -79,6 +80,19 @@ public class LController {
 //                    );
 //
 //                }
+
+              if(CryptoManager.getInstance().isCodeWord(codeWordFiled.getText())){
+
+                  System.out.println("WORD PASSED!");
+
+
+              }else{
+                  codeWordFiled.setStyle("-fx-background-color:  #2A2A27; -fx-background-radius: 4; -fx-border-color:  #ed6a6a; -fx-border-radius: 4; -fx-text-fill: #ed6a6a; ");
+
+                  System.err.println("WORD NOT PASSED!");
+
+
+              }
 
 
             }
