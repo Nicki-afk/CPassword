@@ -12,6 +12,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.text.Text;
 import logic.Crypto;
 import logic.PSystem;
+import logic.Pass;
 import managers.CryptoManager;
 import managers.WinManager;
 
@@ -43,6 +44,8 @@ public class LController {
 
     @FXML
     void initialize() {
+
+
 
         versionText.setText(PSystem.getVersion());
 
@@ -84,7 +87,7 @@ public class LController {
               if(CryptoManager.getInstance().isCodeWord(codeWordFiled.getText())){
 
                   System.out.println("WORD PASSED!");
-
+                  WinManager.loadWindow("/fxml/savePWindow.fxml");
 
               }else{
                   codeWordFiled.setStyle("-fx-background-color:  #2A2A27; -fx-background-radius: 4; -fx-border-color:  #ed6a6a; -fx-border-radius: 4; -fx-text-fill: #ed6a6a; ");

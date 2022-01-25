@@ -49,7 +49,6 @@ public class Controller {
     @FXML
     private Button reloadButton;
 
-
     @FXML
     private Button passManagerButton;
 
@@ -61,6 +60,7 @@ public class Controller {
 
     @FXML
     void initialize() {
+
 
 
 
@@ -132,6 +132,8 @@ public class Controller {
             public void handle(ActionEvent event) {
 
                 try {
+
+
 
                     if (manager.getRecords().size() < 2) {
                         passManagerButton.getScene().getWindow().hide();

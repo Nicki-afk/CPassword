@@ -5,31 +5,164 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<Pane fx:id="mainPane" prefHeight="340.0" prefWidth="466.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SPController">
+<Pane fx:id="mainPane" prefHeight="404.0" prefWidth="507.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SPController">
    <children>
-      <Text fx:id="versionText" fill="WHITE" layoutX="385.0" layoutY="20.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-061221">
+      <Text fx:id="versionText" fill="WHITE" layoutX="222.0" layoutY="400.0" strokeType="OUTSIDE" strokeWidth="0.0" text="version-0.0.0.1-061221">
          <font>
             <Font size="6.0" />
          </font>
       </Text>
-      <TextField fx:id="namePasswordFiled" alignment="CENTER" layoutX="14.0" layoutY="129.0" promptText="NAME PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-background-radius: 4; -fx-border-radius: 4; -fx-text-fill: white;" />
-      <Button fx:id="sinUpButton" layoutX="14.0" layoutY="199.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4;" text="SAVE" textFill="WHITE" />
-      <Button fx:id="exitButton" layoutX="14.0" layoutY="271.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="68.0" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: #ed6a6a; -fx-border-radius: 4;" text="EXIT" textFill="#ed6a6a" />
-      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 4;">
-         <children>
-            <Pane layoutY="3.0" prefHeight="8.0" prefWidth="466.0" style="-fx-background-color: #DCDCDC;" />
-         </children>
-      </Pane>
-      <PasswordField fx:id="passwordFiled" alignment="CENTER" layoutX="14.0" layoutY="162.0" promptText="PASSWORD" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4; -fx-text-fill: white;" />
-      <TableView fx:id="table" layoutX="177.0" layoutY="89.0" prefHeight="235.0" prefWidth="269.0">
-         <columns>
-            <TableColumn prefWidth="75.0" text="NAME" />
-            <TableColumn prefWidth="75.0" text="Column X" />
-         </columns>
+      <Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="8.0" prefWidth="507.0" style="-fx-background-color: #DCDCDC; -fx-background-radius: 4;" />
+      <TableView fx:id="mainTable" editable="true" layoutX="9.0" layoutY="20.0" prefHeight="198.0" prefWidth="487.0">
+        <columns>
+          <TableColumn fx:id="numberPass" prefWidth="34.0" style="-fx-background-color: #d4d4d4; -fx-border-width: 0.2; -fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: #4A4A4A;" text="N" />
+          <TableColumn fx:id="namePass" prefWidth="95.0" style="-fx-background-color: #d4d4d4; -fx-border-width: 0.2; -fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: #4A4A4A;" text="NAME" />
+            <TableColumn fx:id="linkPass" prefWidth="87.66668701171875" style="-fx-background-color: #d4d4d4; -fx-border-width: 0.2; -fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: #4A4A4A;" text="LINK" />
+            <TableColumn fx:id="datePass" prefWidth="121.0" style="-fx-background-color: #d4d4d4; -fx-border-width: 0.2; -fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: #4A4A4A;" text="DATE" />
+            <TableColumn fx:id="password" prefWidth="147.0" style="-fx-background-color: #d4d4d4; -fx-border-width: 0.2; -fx-background-radius: 2; -fx-border-radius: 2; -fx-border-color: #4A4A4A;" text="PASSWORD" />
+        </columns>
       </TableView>
+      <TextField fx:id="saveNamePasswordFiled" alignment="CENTER" layoutX="34.0" layoutY="272.0" prefHeight="22.0" prefWidth="136.0" promptText="NAME PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="saveLinkPasswordFiled" alignment="CENTER" layoutX="34.0" layoutY="300.0" prefHeight="22.0" prefWidth="136.0" promptText="LINK/LOGIN/TEG" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <Button fx:id="saveButton" alignment="TOP_LEFT" layoutX="34.0" layoutY="359.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="70.0" style="-fx-background-color: #2A2A27; -fx-border-color: #13C502; -fx-background-radius: 4; -fx-border-radius: 4;" text=" SAVE" textFill="#13c502">
+         <font>
+            <Font name="Consolas Bold" size="10.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="12.0" fitWidth="13.0">
+               <image>
+                  <Image url="@../images/save.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane layoutY="2.0" prefHeight="8.0" prefWidth="507.0" style="-fx-background-color: #DCDCDC;">
+         <children>
+            <Button fx:id="exitButton" alignment="TOP_LEFT" layoutX="480.0" layoutY="-2.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="9.0" prefWidth="30.0" style="-fx-background-color: #ef4747; -fx-border-color: #ef4747; -fx-background-radius: 2; -fx-border-radius: 4;" textFill="#ef4747">
+               <font>
+                  <Font name="Consolas Bold" size="10.0" />
+               </font>
+            </Button>
+         </children></Pane>
+      <Button fx:id="clearButton" alignment="CENTER" layoutX="110.0" layoutY="359.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="60.0" style="-fx-background-color: #2A2A27; -fx-border-color: #ff6f01; -fx-background-radius: 4; -fx-border-radius: 4;" text="clear" textFill="#ff6f01">
+         <font>
+            <Font name="Consolas Bold" size="10.0" />
+         </font>
+      </Button>
+      <Pane layoutX="32.0" layoutY="257.0" prefHeight="3.0" prefWidth="140.0" style="-fx-background-color: #52ef41; -fx-background-radius: 2;" />
+      <Text fill="#52ef41" layoutX="57.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="SAVE PASSWORD" />
+      <Pane layoutX="177.0" layoutY="257.0" prefHeight="3.0" prefWidth="140.0" style="-fx-background-color: #ff6600; -fx-background-radius: 2;" />
+      <Text fill="#ff6600" layoutX="202.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="GET PASSWORD" />
+      <TextField fx:id="selectedLinkPassFiled" alignment="CENTER" layoutX="179.0" layoutY="300.0" prefHeight="22.0" prefWidth="136.0" promptText="SELECTED LINK" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="selectedNamePassFiled" alignment="CENTER" layoutX="179.0" layoutY="272.0" prefHeight="22.0" prefWidth="136.0" promptText="SELECTED NAME" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <PasswordField fx:id="selectedPassFiled" alignment="CENTER" layoutX="179.0" layoutY="360.0" prefHeight="22.0" prefWidth="136.0" promptText="PASSWORD" style="-fx-background-color: #2A2A27; -fx-background-radius: 4; -fx-border-color: white; -fx-border-radius: 4; -fx-text-fill: white; -fx-prompt-text-fill: #DCDCDC;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </PasswordField>
+      <Button fx:id="deleteButton" alignment="TOP_LEFT" layoutX="327.0" layoutY="271.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="70.0" style="-fx-background-color: #2A2A27; -fx-border-color: #ef4747; -fx-background-radius: 4; -fx-border-radius: 4;" text="DELETE" textFill="#ef4747">
+         <font>
+            <Font name="Consolas Bold" size="10.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="11.0" fitWidth="11.0">
+               <image>
+                  <Image url="@../images/del.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="copyButton" alignment="CENTER" layoutX="403.0" layoutY="271.0" mnemonicParsing="false" prefHeight="17.0" prefWidth="65.0" style="-fx-background-color: #2A2A27; -fx-border-color: #ff6f01; -fx-background-radius: 4; -fx-border-radius: 4;" text="COPY" textFill="#ff6f01">
+         <font>
+            <Font name="Consolas Bold" size="10.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="13.0" fitWidth="13.0">
+               <image>
+                  <Image url="@../images/copy_2.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="selectedDatePassFiled" alignment="CENTER" layoutX="179.0" layoutY="329.0" prefHeight="22.0" prefWidth="136.0" promptText="SELECTED PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;" text="SELECTED DATE">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <TextField fx:id="searchNamePassFiled" alignment="CENTER" layoutX="327.0" layoutY="300.0" prefHeight="22.0" prefWidth="109.0" promptText="NAME PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <Button fx:id="searchButton" layoutX="439.0" layoutY="300.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="30.0" style="-fx-background-color: #2A2A27; -fx-border-color: #02bed0; -fx-background-radius: 4; -fx-border-radius: 4;" textFill="#02bed0">
+         <font>
+            <Font name="Consolas Bold" size="9.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="15.0" fitWidth="14.0">
+               <image>
+                  <Image url="@../images/search.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Pane layoutX="325.0" layoutY="257.0" prefHeight="3.0" prefWidth="140.0" style="-fx-background-color: #d4d4d4; -fx-background-radius: 2;" />
+      <Text fill="#d4d4d4" layoutX="371.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="UTILITIES" />
+      <TextField fx:id="genPassFiled" alignment="CENTER" layoutX="327.0" layoutY="329.0" prefHeight="22.0" prefWidth="140.0" promptText="GENERATE PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
+      <Button fx:id="copyRecPassButton" alignment="CENTER" layoutX="419.0" layoutY="357.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="48.0" style="-fx-background-color: #2A2A27; -fx-border-color: #e4e4e4; -fx-background-radius: 4; -fx-border-radius: 4;" textFill="#e0e0e0">
+         <font>
+            <Font name="Consolas Bold" size="10.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="16.0">
+               <image>
+                  <Image url="@../images/copy.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <Button fx:id="reloadButton" alignment="CENTER" layoutX="328.0" layoutY="357.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="87.0" style="-fx-background-color: #2A2A27; -fx-border-color: #e4e4e4; -fx-background-radius: 4; -fx-border-radius: 4;" text="RELOAD" textFill="#e4e4e4">
+         <font>
+            <Font name="Consolas Bold" size="10.0" />
+         </font>
+         <graphic>
+            <ImageView fitHeight="16.0" fitWidth="15.0">
+               <image>
+                  <Image url="@../images/reload.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </Button>
+      <TextField fx:id="savePasswordFiled" alignment="CENTER" layoutX="36.0" layoutY="329.0" prefHeight="22.0" prefWidth="136.0" promptText="PASSWORD" style="-fx-background-color: #2A2A27; -fx-border-color: white; -fx-border-radius: 4; -fx-prompt-text-fill: #DCDCDC; -fx-text-fill: white;">
+         <font>
+            <Font size="9.0" />
+         </font>
+      </TextField>
    </children>
 </Pane>

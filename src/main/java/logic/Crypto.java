@@ -3,7 +3,14 @@ package logic;
 
 import org.apache.commons.lang3.ArrayUtils;
 
+import javax.crypto.Cipher;
+import javax.crypto.SecretKey;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.SecretKeySpec;
 import javax.swing.plaf.PanelUI;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import javax.xml.bind.DatatypeConverter;
+import javax.xml.crypto.Data;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
@@ -90,6 +97,53 @@ public abstract class Crypto {
     }
 
 
+    protected String encrypt(Pass pass ,  SecretKey key){
+
+
+         try {
+
+             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+             cipher.init(Cipher.ENCRYPT_MODE, key);
+
+             byte[] iv = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
+
+             String namePass = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getNAME().getBytes(StandardCharsets.UTF_8)));
+             String link  = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getLINK().getBytes(StandardCharsets.UTF_8)));
+             String date = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getDATE().getBytes(StandardCharsets.UTF_8)));
+             String password = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getPASSWORD().getBytes(StandardCharsets.UTF_8)));
+
+             String mainCipher = namePass + "!" + link + "!" + date + "!" + password;
+
+
+             return mainCipher;
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+         return null;
+
+
+    }
+
+
+
+
+    public String getRecord(byte[]arr){
+
+         String record = "{";
+
+         for(byte i : arr){
+
+             record += i + "/";
+
+         }
+
+         record += "}";
+
+         return record;
+
+    }
+
+
     // abstract methods
 
     protected abstract boolean isCodeWord(String word);
@@ -97,7 +151,7 @@ public abstract class Crypto {
     protected abstract byte[]getItSalt();
     protected abstract void init();
     protected abstract void writeCryptoWord();
-    protected abstract void writeCryptoPass();
+    protected abstract void writeCryptoPass(Pass pass);
 
     public void setCryptoData(String data) {
         this.data = data;
