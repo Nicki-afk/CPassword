@@ -47,14 +47,6 @@ public abstract class Crypto {
     }
 
 
-    // Add methods
-    // - byte[] getEncryptCodeWord();
-    // - boolean isCodeWord();
-
-
-    // rewrite ...
-    // return statement remake to byte[]arr
-
 
 
 
@@ -77,6 +69,31 @@ public abstract class Crypto {
     }
 
 
+    protected String encrypt(Cipher cipher , SecretKey key , Pass pass){
+
+
+         try {
+
+             cipher.init(Cipher.ENCRYPT_MODE, key);
+             String namePass = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getNAME().getBytes(StandardCharsets.UTF_8)));
+             String link  = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getLINK().getBytes(StandardCharsets.UTF_8)));
+             String date = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getDATE().getBytes(StandardCharsets.UTF_8)));
+             String password = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getPASSWORD().getBytes(StandardCharsets.UTF_8)));
+
+             String mainCipher = namePass + "!" + link + "!" + date + "!" + password;
+
+             return mainCipher;
+
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+
+         return null;
+
+    }
+
+
+
     public byte[] transformFormat(String s){
 
          String st = s.substring(1 , s.length()-1);
@@ -97,32 +114,7 @@ public abstract class Crypto {
     }
 
 
-    protected String encrypt(Pass pass ,  SecretKey key){
 
-
-         try {
-
-             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-             cipher.init(Cipher.ENCRYPT_MODE, key);
-
-             byte[] iv = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
-
-             String namePass = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getNAME().getBytes(StandardCharsets.UTF_8)));
-             String link  = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getLINK().getBytes(StandardCharsets.UTF_8)));
-             String date = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getDATE().getBytes(StandardCharsets.UTF_8)));
-             String password = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getPASSWORD().getBytes(StandardCharsets.UTF_8)));
-
-             String mainCipher = namePass + "!" + link + "!" + date + "!" + password;
-
-
-             return mainCipher;
-         }catch (Exception e){
-             e.printStackTrace();
-         }
-         return null;
-
-
-    }
 
 
 

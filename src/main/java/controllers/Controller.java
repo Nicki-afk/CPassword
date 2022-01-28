@@ -135,7 +135,7 @@ public class Controller {
 
 
 
-                    if (manager.getRecords().size() < 2) {
+                    if (manager.getRecords().size() < 3) {
                         passManagerButton.getScene().getWindow().hide();
 //                    WinManager.loadWindow("/fxml/sinUpWindow.fxml");
 
