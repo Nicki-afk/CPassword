@@ -2,11 +2,11 @@
 
 <h4>The application allows you to store passwords locally and securely. The program stores passwords on the local PC and uses the AES military encryption algorithm. A key word will be used to enter and use the program , which will protect your passwords from unauthorized access. </h4>
 
-<h1> ABOUT DATA </h1>
+<h2> ABOUT DATA </h2>
 
 <h4>  The program does not store any user data either locally or remotely, the program does not collect any user data, including deognastic </h4>
 
-<h1> ABOUT RIGHTS </h1>
+<h2> ABOUT RIGHTS </h2>
 
 <h4> 
 
