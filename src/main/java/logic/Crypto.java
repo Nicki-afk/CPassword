@@ -1,7 +1,9 @@
 package logic;
 
 
+import com.sun.xml.internal.messaging.saaj.util.Base64;
 import org.apache.commons.lang3.ArrayUtils;
+import sun.misc.BASE64Decoder;
 
 import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
@@ -39,7 +41,7 @@ public abstract class Crypto {
 
     protected  byte[] initSalt(){
 
-        byte[]salt = new byte[32];
+        byte[]salt = new byte[16];
         SecureRandom random = new SecureRandom();
         random.nextBytes(salt);
 
@@ -89,6 +91,28 @@ public abstract class Crypto {
          }
 
          return null;
+
+    }
+
+    protected String decrypt(Cipher cipher , SecretKey key , byte[]iv , String cipherWord ){
+
+
+         try {
+
+
+
+
+             cipher.init(Cipher.DECRYPT_MODE, key , new IvParameterSpec(iv));
+
+
+
+             String ret = new String(cipher.doFinal(cipherWord.getBytes(StandardCharsets.UTF_8)) );
+             return  ret;
+
+         }catch (Exception e){
+             e.printStackTrace();
+         }
+         return "";
 
     }
 

@@ -62,6 +62,46 @@ public class CryptoManager extends Crypto{
         return cryptoManager == null ? cryptoManager = new CryptoManager() : cryptoManager;
     }
 
+    @Override
+    public void init(){
+
+
+        try {
+
+            this.cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+
+            File file = new File("user");
+
+
+            if (!file.exists()) {
+
+                this.ivParameters = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
+
+                file.mkdir();
+                file = new File("user\\base.txt");
+                file.createNewFile();
+                file = new File("user\\basep.txt");
+                file.createNewFile();
+                writeBytes("user/base.txt" , salt);
+                writeBytes("user/base.txt" , ivParameters);
+                readRecords("user/base.txt" , records);
+            }else{
+                readRecords("user/base.txt" , records);
+                readRecords("user/basep.txt" , passwords);
+                salt = getItSalt();
+                this.ivParameters = DatatypeConverter.parseHexBinary(records.get(1));
+                transform();
+
+
+
+            }
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+    }
+
 
     @Override
     public boolean isCodeWord(String word) {
@@ -152,38 +192,7 @@ public class CryptoManager extends Crypto{
 
     }
 
-    @Override
-    public void init(){
 
-
-        try {
-
-             this.cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-             this.ivParameters = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
-
-            File file = new File("user");
-
-
-            if (!file.exists()) {
-                file.mkdir();
-                file = new File("user\\base.txt");
-                file.createNewFile();
-                file = new File("user\\basep.txt");
-                file.createNewFile();
-                writeBytes("user/base.txt" , salt);
-                writeBytes("user/base.txt" , ivParameters);
-                readRecords("user/base.txt" , records);
-            }else{
-                readRecords("user/base.txt" , records);
-                readRecords("user/basep.txt" , passwords);
-                salt = getItSalt();
-            }
-
-        }catch (Exception e){
-            e.printStackTrace();
-        }
-
-    }
 
     @Override
     public void writeCryptoWord(){
@@ -227,11 +236,18 @@ public class CryptoManager extends Crypto{
                 ){
 
             SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            KeySpec spec = new PBEKeySpec(this.word.toCharArray(), salt, 65536, 256);
+            KeySpec spec = new PBEKeySpec("DOG".toCharArray(), salt, 65536, 256);
             SecretKey tmp = factory.generateSecret(spec);
             SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
+            System.out.println(DatatypeConverter.printHexBinary(secret.getEncoded()));
 
-            passwords.add(encrypt(this.cipher , secret , pass));
+            this.cipher.init(Cipher.ENCRYPT_MODE , secret);
+
+            byte[] ciphertext = this.cipher.doFinal(pass.getPASSWORD().getBytes("UTF-8"));
+
+            System.out.println("encode : " + DatatypeConverter.printHexBinary(ciphertext));
+
+            passwords.add(DatatypeConverter.printHexBinary(ciphertext));
 
             for(String i : passwords){
 
@@ -273,26 +289,38 @@ public class CryptoManager extends Crypto{
         }
     }
 
-    public void readPasswords(){
+    public void transform(){
 
-        File file = new File("/user/basep.txt");
-
-        try(
-
-                BufferedReader reader = new BufferedReader(new FileReader(file));
-
-                ){
+       try{
 
 
-            String i = "";
-            while ((i = reader.readLine()) != null){
-                passwords.add(i);
-            }
+           String password = passwords.get(0).trim();
 
-        }catch (Exception e){
-            e.printStackTrace();
-        }
+           byte[]ciphertext = DatatypeConverter.parseHexBinary(password);
 
+
+           // 088399E4C2A4FF4D713FBA137DEB4190C1355B80BE8E62CE4AA1E65198BCE973
+           // 088399E4C2A4FF4D713FBA137DEB4190C1355B80BE8E62CE4AA1E65198BCE973
+
+           SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
+           KeySpec spec = new PBEKeySpec("DOG".toCharArray(), salt, 65536, 256);
+           SecretKey tmp = factory.generateSecret(spec);
+           SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
+           System.out.println(DatatypeConverter.printHexBinary(secret.getEncoded()));
+
+           Cipher cipher1 = Cipher.getInstance("AES/CBC/PKCS5Padding");
+           cipher1.init(Cipher.DECRYPT_MODE, secret , new IvParameterSpec(ivParameters));
+
+
+           System.out.println("decode : " + new String(cipher1.doFinal(ciphertext)));
+
+
+
+
+
+       }catch (Exception e){
+           e.printStackTrace();
+       }
 
     }
 

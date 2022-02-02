@@ -7,12 +7,19 @@ import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import logic.Decrypt;
+import logic.Encrypt;
 import logic.Pass;
-import managers.CryptoManager;
 
-import java.io.BufferedWriter;
-import java.io.FileWriter;
+import javax.crypto.SecretKey;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
+import javax.xml.bind.DatatypeConverter;
 import java.io.IOException;
+import java.security.SecureRandom;
+import java.security.spec.KeySpec;
 
 
 public class MainClass extends Application {
@@ -22,7 +29,21 @@ public class MainClass extends Application {
 
 
 
-            launch();
+        byte[]salt = new byte[16];
+        byte[]iv = new byte[16];
+        SecureRandom random = new SecureRandom();
+        random.nextBytes(salt);
+        random.nextBytes(iv);
+
+        Pass pass = new Pass(0 , "mail" , "mail.ru" , "22:01:1222" , "dwdwdw");
+
+        Encrypt encrypt = new Encrypt("DOG" , pass , salt , new IvParameterSpec(iv));
+        System.out.println(encrypt.enc());
+
+
+
+
+        // launch();
 
 
 

@@ -31,6 +31,14 @@ public class Pass {
     }
 
 
+    public String format(){
+
+
+        return "[" + this.namePassword + "][" + this.linkP + "]{" + this.date + "}{" + this.pass + "}";
+
+    }
+
+
     public int getN() {
         return number;
     }
