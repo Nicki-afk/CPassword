@@ -21,6 +21,8 @@ public class Pass {
 
     public Pass(int number , String namePassword , String linkP , String date ,  String pass){
 
+
+
         this.number = number;
         this.namePassword = namePassword;
         this.linkP = linkP;
@@ -29,6 +31,19 @@ public class Pass {
 
 
     }
+
+    public Pass(String h){
+
+        this.namePassword = h.substring(h.indexOf("[")+1 , h.indexOf("]")).trim();
+        this.linkP = h.substring(h.lastIndexOf("[")+1 , h.lastIndexOf("]")).trim();
+        this.date = h.substring(h.indexOf("{")+1 , h.indexOf("}")).trim();
+        this.pass = h.substring(h.lastIndexOf("{")+1 , h.lastIndexOf("}")).trim();
+
+
+    }
+
+
+
 
 
     public String format(){
@@ -80,6 +95,9 @@ public class Pass {
     public String getPASSWORD() {
         return pass;
     }
+
+
+    // add method copyPass(ClickBoardContent content);
 
     public Pass setPass(String pass) {
         this.pass = pass;

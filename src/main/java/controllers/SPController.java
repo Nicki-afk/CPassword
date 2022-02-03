@@ -25,7 +25,6 @@ import logic.Pass;
 import logic.Password;
 import managers.CryptoManager;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 
 public class SPController {
 

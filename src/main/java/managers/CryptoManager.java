@@ -2,18 +2,14 @@ package managers;
 
 
 import logic.Crypto;
+import logic.Decrypt;
+import logic.Encrypt;
 import logic.Pass;
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
 import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
 import javax.xml.bind.DatatypeConverter;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
-import java.security.spec.KeySpec;
 import java.util.ArrayList;
 
 
@@ -30,7 +26,6 @@ public class CryptoManager extends Crypto{
     private String data;
     private String word;
     private byte[]salt;
-    private  Cipher cipher;
     private  byte[] ivParameters;
 
     public static CryptoManager cryptoManager;
@@ -42,13 +37,16 @@ public class CryptoManager extends Crypto{
 
         super(data);
         this.data = data;
-        salt = initSalt();
+        this.salt = initSalt();
+        this.ivParameters = initSalt();
 
     }
 
     private CryptoManager(){
         super();
         salt = initSalt();
+        this.ivParameters = initSalt();
+
     }
 
 
@@ -68,14 +66,13 @@ public class CryptoManager extends Crypto{
 
         try {
 
-            this.cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
 
             File file = new File("user");
 
 
             if (!file.exists()) {
 
-                this.ivParameters = cipher.getParameters().getParameterSpec(IvParameterSpec.class).getIV();
+
 
                 file.mkdir();
                 file = new File("user\\base.txt");
@@ -90,9 +87,11 @@ public class CryptoManager extends Crypto{
                 readRecords("user/basep.txt" , passwords);
                 salt = getItSalt();
                 this.ivParameters = DatatypeConverter.parseHexBinary(records.get(1));
-                transform();
 
 
+
+                // test
+                transformPass();
 
             }
 
@@ -113,7 +112,9 @@ public class CryptoManager extends Crypto{
             MessageDigest digest = MessageDigest.getInstance("SHA-512");
             digest.update(salt);
             String inWord = DatatypeConverter.printHexBinary(digest.digest(word.getBytes(StandardCharsets.UTF_8)));
-            this.word = codeWord.equals(inWord) ? inWord : null;
+            this.word = codeWord.equals(inWord) ? word : null;
+
+
 
             return codeWord.equals(inWord);
 
@@ -209,8 +210,6 @@ public class CryptoManager extends Crypto{
             records.add(DatatypeConverter.printHexBinary(recordBytes));
 
 
-
-
             for(int x = 0; x < records.size(); x++){
 
                 writer.write(records.get(x) + "\n");
@@ -235,19 +234,12 @@ public class CryptoManager extends Crypto{
 
                 ){
 
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            KeySpec spec = new PBEKeySpec("DOG".toCharArray(), salt, 65536, 256);
-            SecretKey tmp = factory.generateSecret(spec);
-            SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
-            System.out.println(DatatypeConverter.printHexBinary(secret.getEncoded()));
 
-            this.cipher.init(Cipher.ENCRYPT_MODE , secret);
+            System.out.println("'" + this.word + "'");
 
-            byte[] ciphertext = this.cipher.doFinal(pass.getPASSWORD().getBytes("UTF-8"));
+            Encrypt encrypt = new Encrypt(this.word , pass , this.salt , new IvParameterSpec(ivParameters));
 
-            System.out.println("encode : " + DatatypeConverter.printHexBinary(ciphertext));
-
-            passwords.add(DatatypeConverter.printHexBinary(ciphertext));
+            passwords.add(encrypt.enc());
 
             for(String i : passwords){
 
@@ -260,14 +252,7 @@ public class CryptoManager extends Crypto{
             e.printStackTrace();
         }
 
-
-        // ...
     }
-
-
-
-
-
 
 
     public void readRecords(String filePath , ArrayList<String>list){
@@ -289,47 +274,17 @@ public class CryptoManager extends Crypto{
         }
     }
 
-    public void transform(){
-
-       try{
 
 
-           String password = passwords.get(0).trim();
-
-           byte[]ciphertext = DatatypeConverter.parseHexBinary(password);
+    public void transformPass(){
 
 
-           // 088399E4C2A4FF4D713FBA137DEB4190C1355B80BE8E62CE4AA1E65198BCE973
-           // 088399E4C2A4FF4D713FBA137DEB4190C1355B80BE8E62CE4AA1E65198BCE973
+        Decrypt decrypt = new Decrypt("DOG" , passwords , this.salt , new IvParameterSpec(ivParameters));
 
-           SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-           KeySpec spec = new PBEKeySpec("DOG".toCharArray(), salt, 65536, 256);
-           SecretKey tmp = factory.generateSecret(spec);
-           SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
-           System.out.println(DatatypeConverter.printHexBinary(secret.getEncoded()));
+        decrypt.dec();
 
-           Cipher cipher1 = Cipher.getInstance("AES/CBC/PKCS5Padding");
-           cipher1.init(Cipher.DECRYPT_MODE, secret , new IvParameterSpec(ivParameters));
-
-
-           System.out.println("decode : " + new String(cipher1.doFinal(ciphertext)));
-
-
-
-
-
-       }catch (Exception e){
-           e.printStackTrace();
-       }
 
     }
-
-
-
-
-
-
-
 
 
     public byte[] getSalt() {

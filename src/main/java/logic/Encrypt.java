@@ -50,21 +50,10 @@ public class Encrypt {
 
 
 
+            String enc = DatatypeConverter.printHexBinary(cipher.doFinal(pass.format().getBytes(StandardCharsets.UTF_8)));
 
 
-            byte[]name = pass.getNAME().getBytes(StandardCharsets.UTF_8);
-            byte[]link = pass.getLINK().getBytes(StandardCharsets.UTF_8);
-            byte[]date = pass.getDATE().getBytes(StandardCharsets.UTF_8);
-            byte[]password = pass.getPASSWORD().getBytes(StandardCharsets.UTF_8);
-
-
-            String encText =
-                    DatatypeConverter.printHexBinary(cipher.doFinal(name)) + "!" +
-                    DatatypeConverter.printHexBinary(cipher.doFinal(link)) + "!" +
-                    DatatypeConverter.printHexBinary(cipher.doFinal(date)) + "!" +
-                    DatatypeConverter.printHexBinary(cipher.doFinal(password));
-
-            return "encText";
+            return enc;
 
 
 

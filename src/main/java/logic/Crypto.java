@@ -1,23 +1,9 @@
 package logic;
 
 
-import com.sun.xml.internal.messaging.saaj.util.Base64;
-import org.apache.commons.lang3.ArrayUtils;
-import sun.misc.BASE64Decoder;
-
-import javax.crypto.Cipher;
-import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
-import javax.crypto.spec.SecretKeySpec;
-import javax.swing.plaf.PanelUI;
-import javax.swing.plaf.synth.SynthOptionPaneUI;
-import javax.xml.bind.DatatypeConverter;
-import javax.xml.crypto.Data;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.SecureRandom;
-import java.util.ArrayList;
-import java.util.Scanner;
 
 public abstract class Crypto {
 
@@ -71,94 +57,6 @@ public abstract class Crypto {
     }
 
 
-    protected String encrypt(Cipher cipher , SecretKey key , Pass pass){
-
-
-         try {
-
-             cipher.init(Cipher.ENCRYPT_MODE, key);
-             String namePass = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getNAME().getBytes(StandardCharsets.UTF_8)));
-             String link  = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getLINK().getBytes(StandardCharsets.UTF_8)));
-             String date = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getDATE().getBytes(StandardCharsets.UTF_8)));
-             String password = DatatypeConverter.printHexBinary(cipher.doFinal(pass.getPASSWORD().getBytes(StandardCharsets.UTF_8)));
-
-             String mainCipher = namePass + "!" + link + "!" + date + "!" + password;
-
-             return mainCipher;
-
-         }catch (Exception e){
-             e.printStackTrace();
-         }
-
-         return null;
-
-    }
-
-    protected String decrypt(Cipher cipher , SecretKey key , byte[]iv , String cipherWord ){
-
-
-         try {
-
-
-
-
-             cipher.init(Cipher.DECRYPT_MODE, key , new IvParameterSpec(iv));
-
-
-
-             String ret = new String(cipher.doFinal(cipherWord.getBytes(StandardCharsets.UTF_8)) );
-             return  ret;
-
-         }catch (Exception e){
-             e.printStackTrace();
-         }
-         return "";
-
-    }
-
-
-
-    public byte[] transformFormat(String s){
-
-         String st = s.substring(1 , s.length()-1);
-
-        Scanner scanner = new Scanner(st).useDelimiter("/");
-        ArrayList<Byte>bytes = new ArrayList<>();
-
-        while (scanner.hasNext()){
-
-            bytes.add(scanner.nextByte());
-
-        }
-
-        byte[]arr = ArrayUtils.toPrimitive(bytes.toArray(new Byte[bytes.size()]));
-
-        return arr;
-
-    }
-
-
-
-
-
-
-
-    public String getRecord(byte[]arr){
-
-         String record = "{";
-
-         for(byte i : arr){
-
-             record += i + "/";
-
-         }
-
-         record += "}";
-
-         return record;
-
-    }
-
 
     // abstract methods
 
@@ -174,51 +72,4 @@ public abstract class Crypto {
     }
 }
 
-
-//        if(!new FileManager().filesExists()){
-//            return false;
-//        }else {
-//
-//
-//           - byte[] salt = new byte[32]; -\
-//            try {
-//
-//                MessageDigest digest = MessageDigest.getInstance("SHA-512");
-//                digest.update(this.salt);
-//                FileManager fileManager = new FileManager();
-//                Byte[] inWord = ArrayUtils.toObject(digest.digest(word.getBytes(StandardCharsets.UTF_8)));
-//             -   ArrayList<Byte> bytes = new ArrayList<>();
-
-// if(this.records.size() < 2)
-//
-//                // this string to FileManager
-//                Scanner scanner = new Scanner(fileManager.read()).useDelimiter("/");
-//
-//                while (scanner.hasNext()) {
-//
-//                    bytes.add(scanner.nextByte());
-//
-//                }
-//
-//
-//                Byte[] codeWord = bytes.toArray(new Byte[bytes.size()]);
-//
-//
-//                if(Arrays.equals(inWord, codeWord)){
-//                   this.code_word = ArrayUtils.toPrimitive(codeWord);
-//                    return true;
-//
-//                }else{
-//                    return false;
-//                }
-//
-//
-//
-//            } catch (Exception e) {
-//
-//
-//                return false;
-//            }
-//
-//        }
 
