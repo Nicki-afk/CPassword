@@ -24,9 +24,9 @@ public class WinManager {
 
             Stage stage = new Stage();
             Pane pane = FXMLLoader.load(WinManager.class.getResource(fxml));
-            Scene scene = new Scene(pane , Color.TRANSPARENT);
+            stage.setResizable(false);
+            Scene scene = new Scene(pane );
             stage.setScene(scene);
-            stage.initStyle(StageStyle.TRANSPARENT);
             stage.showAndWait();
            //com.sun.glass.ui.Window.getWindows().get(0).setUndecoratedMoveRectangle(22);
 

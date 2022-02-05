@@ -38,6 +38,7 @@ public class SController {
 
     @FXML
     void initialize() {
+
         versionText.setText(PSystem.getVersion());
 
 

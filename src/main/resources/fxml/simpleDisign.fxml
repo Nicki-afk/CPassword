@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<VBox prefHeight="482.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SaveController">
+  <children>
+    <MenuBar prefHeight="20.0" prefWidth="640.0" VBox.vgrow="NEVER">
+      <menus>
+        <Menu mnemonicParsing="false" text="Settings">
+          <items>
+            <MenuItem mnemonicParsing="false" text="New" />
+            <MenuItem mnemonicParsing="false" text="Open…" />
+            <Menu mnemonicParsing="false" text="Open Recent" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Close" />
+            <MenuItem mnemonicParsing="false" text="Save" />
+            <MenuItem mnemonicParsing="false" text="Save As…" />
+            <MenuItem mnemonicParsing="false" text="Revert" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Preferences…" />
+            <SeparatorMenuItem mnemonicParsing="false" />
+            <MenuItem mnemonicParsing="false" text="Quit" />
+          </items>
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+          <items>
+            <MenuItem mnemonicParsing="false" text="About MyHelloApp" />
+          </items>
+        </Menu>
+      </menus>
+    </MenuBar>
+    <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="472.0" prefWidth="553.0" VBox.vgrow="ALWAYS">
+      <children>
+            <TableView fx:id="mainTable" layoutX="158.0" layoutY="15.0" prefHeight="427.0" prefWidth="405.0" style="-fx-border-color: black;">
+              <columns>
+                <TableColumn fx:id="numberColumn" prefWidth="21.0" text="N" />
+                <TableColumn fx:id="nameColumn" prefWidth="97.0" text="NAME" />
+                  <TableColumn fx:id="linkColumn" prefWidth="90.0" text="LINK" />
+                  <TableColumn fx:id="dateColumn" prefWidth="93.33331298828125" text="DATE" />
+                  <TableColumn fx:id="passwordColumn" prefWidth="102.66668701171875" text="PASSWORD" />
+              </columns>
+            </TableView>
+            <TextField fx:id="selectedNameFiled" editable="false" layoutX="16.0" layoutY="15.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="selectedLinkFiled" editable="false" layoutX="16.0" layoutY="46.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="selectedDateFiled" editable="false" layoutX="16.0" layoutY="77.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <Button fx:id="deleteButton" disable="true" layoutX="16.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" textFill="#f31919">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="15.0" fitWidth="15.0">
+                     <image>
+                        <Image url="@../images/free-icon-delete-bin-70757.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <TextField fx:id="saveNameFiled" alignment="CENTER" layoutX="17.0" layoutY="210.0" prefHeight="25.0" prefWidth="129.0" promptText="NAME PASSWORD" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="saveLinkFiled" alignment="CENTER" layoutX="17.0" layoutY="241.0" prefHeight="25.0" prefWidth="129.0" promptText="LINK" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="saveDateFiled" alignment="CENTER" layoutX="17.0" layoutY="272.0" prefHeight="25.0" prefWidth="129.0" promptText="DATE" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="savePasswordFiled" alignment="CENTER" layoutX="17.0" layoutY="304.0" prefHeight="25.0" prefWidth="129.0" promptText="PASSWORD" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <Button fx:id="copyButton" layoutX="52.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="14.0" fitWidth="13.0">
+                     <image>
+                        <Image url="@../images/free-icon-copy-content-60990.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="searchButton" disable="true" layoutX="112.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+               <font>
+                  <Font size="11.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="15.0">
+                     <image>
+                        <Image url="@../images/free-icon-search-in-document-magnifying-glass-62754.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="saveButton" layoutX="16.0" layoutY="336.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="59.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="SAVE">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Button>
+            <Button fx:id="clearButton" layoutX="82.0" layoutY="336.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="66.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" text="CLEAR">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+            </Button>
+            <Label layoutX="26.0" layoutY="183.0" text="SAVE PASSWORD">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <TextField fx:id="recomendedFiled" editable="false" layoutX="18.0" layoutY="382.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <Button fx:id="reloadButton" layoutX="19.0" layoutY="413.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="21.0" fitWidth="22.0">
+                     <image>
+                        <Image url="@../images/free-icon-loading-714456.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="copyRecPasswordFiled" layoutX="55.0" layoutY="413.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="14.0">
+                     <image>
+                        <Image url="@../images/free-icon-copy-content-60990.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <Button fx:id="settingsPasswordButton" layoutX="113.0" layoutY="413.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="12.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
+               <font>
+                  <Font name="Consolas" size="12.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="16.0" fitWidth="15.0">
+                     <image>
+                        <Image url="@../images/premium-icon-setting-3070361.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </Button>
+            <PasswordField fx:id="selectedPasswordFiled" layoutX="17.0" layoutY="108.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+      </children>
+    </AnchorPane>
+  </children>
+</VBox>

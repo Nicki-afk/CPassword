@@ -62,9 +62,6 @@ public class Decrypt {
 
 
 
-//            byte[]loc = DatatypeConverter.parseHexBinary(dataList.get(0));
-//            System.out.println(new String(cipher.doFinal(loc)));
-
             for(int x = 0; x < this.dataList.size(); x++){
 
                 byte[]loc = DatatypeConverter.parseHexBinary(dataList.get(x));

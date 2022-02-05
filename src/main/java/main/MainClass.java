@@ -45,12 +45,13 @@ public class MainClass extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
-        Pane pane = FXMLLoader.load(getClass().getResource("/fxml/style.fxml"));
-        Scene scene = new Scene(pane , Color.TRANSPARENT);
+        Pane pane = FXMLLoader.load(getClass().getResource("/fxml/sin.fxml"));
+        Scene scene = new Scene(pane );
         primaryStage.setScene(scene);
-        primaryStage.initStyle(StageStyle.TRANSPARENT);
+        primaryStage.setResizable(false);
+//        primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.show();
-        com.sun.glass.ui.Window.getWindows().get(0).setUndecoratedMoveRectangle(22);
+      //  com.sun.glass.ui.Window.getWindows().get(0).setUndecoratedMoveRectangle(22);
 
 
     }

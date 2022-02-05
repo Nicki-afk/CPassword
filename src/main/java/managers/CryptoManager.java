@@ -1,6 +1,8 @@
 package managers;
 
 
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import logic.Crypto;
 import logic.Decrypt;
 import logic.Encrypt;
@@ -22,6 +24,7 @@ public class CryptoManager extends Crypto{
 
     private ArrayList<String>records = new ArrayList<>();
     private ArrayList<String>passwords = new ArrayList<>();
+    private ObservableList<Pass>passwordsList = FXCollections.observableArrayList();
 
     private String data;
     private String word;
@@ -90,8 +93,6 @@ public class CryptoManager extends Crypto{
 
 
 
-                // test
-                transformPass();
 
             }
 
@@ -276,12 +277,28 @@ public class CryptoManager extends Crypto{
 
 
 
-    public void transformPass(){
+    // rename to readPAss();
+    public boolean transform(){
 
 
         Decrypt decrypt = new Decrypt("DOG" , passwords , this.salt , new IvParameterSpec(ivParameters));
 
-        decrypt.dec();
+
+        ObservableList<Pass>local = decrypt.dec();
+
+
+
+
+
+        if(local != null){
+
+            passwordsList = local;
+            return true;
+
+
+        }
+
+        return false;
 
 
     }
@@ -303,9 +320,19 @@ public class CryptoManager extends Crypto{
 
 
 
+    public ObservableList<Pass>getPasswordsList(){
+
+        return passwordsList;
+    }
 
 
 
+
+    public int passwordSize(){
+
+        return passwords.size();
+
+    }
 
     public ArrayList<String> getRecords() {
         return records;

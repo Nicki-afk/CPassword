@@ -34,6 +34,7 @@ public class Pass {
 
     public Pass(String h){
 
+        this.number = Integer.parseInt(h.substring(h.indexOf("<")+1 , h.indexOf(">")));
         this.namePassword = h.substring(h.indexOf("[")+1 , h.indexOf("]")).trim();
         this.linkP = h.substring(h.lastIndexOf("[")+1 , h.lastIndexOf("]")).trim();
         this.date = h.substring(h.indexOf("{")+1 , h.indexOf("}")).trim();
@@ -49,7 +50,7 @@ public class Pass {
     public String format(){
 
 
-        return "[" + this.namePassword + "][" + this.linkP + "]{" + this.date + "}{" + this.pass + "}";
+        return  "<" + this.number +">[" + this.namePassword + "][" + this.linkP + "]{" + this.date + "}{" + this.pass + "}";
 
     }
 
@@ -98,6 +99,11 @@ public class Pass {
 
 
     // add method copyPass(ClickBoardContent content);
+
+    public void copy(){
+
+
+    }
 
     public Pass setPass(String pass) {
         this.pass = pass;

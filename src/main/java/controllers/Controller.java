@@ -6,167 +6,121 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.TextField;
-import javafx.scene.input.Clipboard;
-import javafx.scene.input.ClipboardContent;
+import javafx.scene.control.PasswordField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import logic.PSystem;
-import logic.Password;
 import managers.CryptoManager;
 import managers.WinManager;
 
-
 public class Controller {
-    @FXML
-    private Pane mainPane;
 
     @FXML
-    private TextField passworUser;
+    private ResourceBundle resources;
 
     @FXML
-    private TextField recommendedPassword;
-
-    @FXML
-    private Button exitButton;
-
-    @FXML
-    private Text percentageText;
+    private URL location;
 
     @FXML
     private Text versionText;
 
     @FXML
-    private Button copyButton;
+    private PasswordField codeWordFiled;
 
     @FXML
-    private Button reloadButton;
+    private Button quationButton;
 
     @FXML
-    private Button passManagerButton;
+    private Button settingsButton;
+
+    @FXML
+    private Button inputButton;
+
+    @FXML
+    private Button registerButton;
+
+    @FXML
+    private AnchorPane mainPane;
+
+    @FXML
+    private Text warningText;
 
 
-    private Password password;
-
-    private CryptoManager manager = CryptoManager.getInstance();
-
+    CryptoManager cryptoManager = CryptoManager.getInstance();
 
     @FXML
     void initialize() {
 
 
-
-
-
         versionText.setText(PSystem.getVersion());
 
-        recommendedPassword.setText(new Password().generatePassword());
+        cryptoManager.init();
 
 
-        manager.init();
+        if(cryptoManager.getRecords().size() < 3){
+
+            settingsButton.setDisable(true);
+            inputButton.setDisable(true);
+            codeWordFiled.setDisable(true);
+            warningText.setVisible(true);
+
+        }else{
+
+            registerButton.setDisable(true);
+
+        }
 
 
         mainPane.setOnMouseEntered(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                password = new Password(mainPane.getScene(), passworUser ,   percentageText);
-                password.listen();
+
+                KeyController keyController = new KeyController(mainPane.getScene(),  codeWordFiled);
+                keyController.listen();
+
             }
         });
 
-
-        exitButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-
-        copyButton.setOnAction(new EventHandler<ActionEvent>() {
+        registerButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
-                try {
 
-                    ClipboardContent clipboardContent = new ClipboardContent();
-                    clipboardContent.putString(recommendedPassword.getText());
-                    // set clipboard content
-                    Clipboard.getSystemClipboard().setContent(clipboardContent);
-
-                    recommendedPassword.setStyle("-fx-border-color: #00FF7F; -fx-text-fill : #00FF7F; -fx-background-color : #2A2A27; -fx-border-radius : 4;");
-
-
-
-
-                }catch (Exception e){
-                    e.printStackTrace();
-                }
+                registerButton.getScene().getWindow().hide();
+                WinManager.loadWindow("/fxml/reg.fxml");
 
 
             }
         });
 
-
-        reloadButton.setOnAction(new EventHandler<ActionEvent>() {
+        inputButton.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
 
-                recommendedPassword.setText(new Password().generatePassword());
-                recommendedPassword.setStyle("-fx-border-color: white; -fx-text-fill : white; -fx-background-color : #2A2A27; -fx-border-radius : 4;");
+                if(!cryptoManager.isCodeWord(codeWordFiled.getText())){
+
+                    codeWordFiled.setStyle("-fx-border-radius : 2; -fx-border-color: red; -fx-border-width: 1;");
+
+                }else{
 
 
-            }
-        });
-
-
-        passManagerButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                try {
-
-
-
-                    if (manager.getRecords().size() < 3) {
-                        passManagerButton.getScene().getWindow().hide();
-//                    WinManager.loadWindow("/fxml/sinUpWindow.fxml");
-
-                        Stage stage = new Stage();
-                        Pane pane = FXMLLoader.load(getClass().getResource("/fxml/sinUpWindow.fxml"));
-                        Scene scene = new Scene(pane, Color.TRANSPARENT);
-                        stage.setScene(scene);
-                        stage.initStyle(StageStyle.TRANSPARENT);
-                        stage.showAndWait();
-
-
-                    } else {
-                        passManagerButton.getScene().getWindow().hide();
-                      //  WinManager.loadWindow("/fxml/sinWindow.fxml");
-
-                        Stage stage = new Stage();
-                        Pane pane = FXMLLoader.load(getClass().getResource("/fxml/sinWindow.fxml"));
-                        Scene scene = new Scene(pane, Color.TRANSPARENT);
-                        stage.setScene(scene);
-                        stage.initStyle(StageStyle.TRANSPARENT);
-                        stage.showAndWait();
-
-
-                    }
-                }catch (Exception e){
-
-                    e.printStackTrace();
+                    inputButton.getScene().getWindow().hide();
+                    WinManager.loadWindow("/fxml/loadWindow.fxml");
                 }
 
             }
         });
+
+
+
+
+
+
 
 
 
@@ -174,4 +128,60 @@ public class Controller {
 
 
     }
+}class KeyController{
+
+
+
+
+    private Scene scene;
+    private PasswordField field;
+
+
+
+    public KeyController(Scene scene , PasswordField field){
+
+
+        this.field = field;
+        this.scene = scene;
+
+    }
+
+    public void listen(){
+
+
+        this.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
+            @Override
+            public void handle(KeyEvent event) {
+
+
+                if(event.getCode() == KeyCode.ENTER){
+
+
+                    CryptoManager manager = CryptoManager.getInstance();
+
+                    if(!manager.isCodeWord(field.getText())){
+
+                        field.setStyle("-fx-border-radius : 2; -fx-border-color: red; -fx-border-width: 1;");
+
+                    }else{
+
+                        scene.getWindow().hide();
+                        WinManager.loadWindow("/fxml/loadWindow.fxml");
+                    }
+
+
+
+                }
+
+
+
+            }
+        });
+
+
+    }
+
+
+
+
 }
