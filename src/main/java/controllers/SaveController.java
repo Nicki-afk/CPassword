@@ -137,6 +137,21 @@ public class SaveController {
                     saveDateFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
                     savePasswordFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
 
+
+                    Pass pass = new Pass();
+
+                    pass
+                            .setNumber(manager.passwordSize())
+                            .setNamePassword(saveNameFiled.getText())
+                            .setLinkP(saveLinkFiled.getText())
+                            .setDate(saveDateFiled.getText())
+                            .setPass(savePasswordFiled.getText());
+
+                    manager.writeCryptoPass(pass);
+                    passwords.add(pass);
+
+
+
                 }
 
 

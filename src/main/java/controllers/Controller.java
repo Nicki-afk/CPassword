@@ -166,7 +166,8 @@ public class Controller {
                     }else{
 
                         scene.getWindow().hide();
-                        WinManager.loadWindow("/fxml/loadWindow.fxml");
+                        CryptoManager.getInstance().transform();
+                        WinManager.loadWindow("/fxml/simpleDisign.fxml");
                     }
 
 

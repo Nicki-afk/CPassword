@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.control.ProgressBar?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<VBox prefHeight="482.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoadWindow">
+<VBox fx:id="mainPane" prefHeight="482.0" prefWidth="569.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.LoadWindow">
    <children>
       <MenuBar prefHeight="20.0" prefWidth="640.0" VBox.vgrow="NEVER" />
       <AnchorPane maxHeight="-1.0" maxWidth="-1.0" prefHeight="472.0" prefWidth="553.0" VBox.vgrow="ALWAYS">
@@ -29,11 +29,9 @@
                   </Text>
                </children>
             </Pane>
-            <ImageView fitHeight="63.0" fitWidth="58.0" layoutX="256.0" layoutY="234.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/hug.gif" />
-               </image>
-            </ImageView>
+            <ProgressBar fx:id="progressBar" layoutX="185.0" layoutY="255.0" prefWidth="200.0" progress="0.0" />
+            <Text fx:id="loadText" layoutX="241.0" layoutY="238.0" strokeType="OUTSIDE" strokeWidth="0.0" text="APP LOADING...." />
+            <Button fx:id="enterButton" disable="true" layoutX="259.0" layoutY="290.0" mnemonicParsing="false" text="ENTER" />
          </children>
       </AnchorPane>
    </children>

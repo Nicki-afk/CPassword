@@ -53,7 +53,6 @@ public class Decrypt {
             KeySpec spec = new PBEKeySpec(this.keyWord.toCharArray(), salt, 65536, 256);
             SecretKey tmp = factory.generateSecret(spec);
             SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
-            System.out.println("ENC_KEY : " + DatatypeConverter.printHexBinary(secret.getEncoded()));
 
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE , secret , this.spec);
@@ -66,7 +65,6 @@ public class Decrypt {
 
                 byte[]loc = DatatypeConverter.parseHexBinary(dataList.get(x));
                 String s = new String(cipher.doFinal(loc));
-                System.out.println(s);
                 list.add(new Pass(s));
 
             }

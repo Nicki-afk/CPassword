@@ -73,9 +73,11 @@ public class CryptoManager extends Crypto{
             File file = new File("user");
 
 
+            // CHECK SYSTEM FILES
             if (!file.exists()) {
 
 
+                // CREATE SYS FILES
 
                 file.mkdir();
                 file = new File("user\\base.txt");
@@ -86,6 +88,9 @@ public class CryptoManager extends Crypto{
                 writeBytes("user/base.txt" , ivParameters);
                 readRecords("user/base.txt" , records);
             }else{
+
+                // READ SYS FILES
+
                 readRecords("user/base.txt" , records);
                 readRecords("user/basep.txt" , passwords);
                 salt = getItSalt();
@@ -236,7 +241,6 @@ public class CryptoManager extends Crypto{
                 ){
 
 
-            System.out.println("'" + this.word + "'");
 
             Encrypt encrypt = new Encrypt(this.word , pass , this.salt , new IvParameterSpec(ivParameters));
 
@@ -281,7 +285,7 @@ public class CryptoManager extends Crypto{
     public boolean transform(){
 
 
-        Decrypt decrypt = new Decrypt("DOG" , passwords , this.salt , new IvParameterSpec(ivParameters));
+        Decrypt decrypt = new Decrypt(this.word , passwords , this.salt , new IvParameterSpec(ivParameters));
 
 
         ObservableList<Pass>local = decrypt.dec();
