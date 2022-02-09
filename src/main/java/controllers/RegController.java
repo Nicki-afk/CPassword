@@ -3,6 +3,7 @@ package controllers;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -16,6 +17,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import logic.PSystem;
 import managers.CryptoManager;
+import managers.WinManager;
 
 public class RegController {
 
@@ -46,43 +48,53 @@ public class RegController {
     @FXML
     void initialize() {
 
-        versionText.setText(PSystem.getVersion());
+
+        try {
+            versionText.setText(PSystem.getVersion());
 
 
+            mainPane.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
 
-
-        mainPane.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-
-                RegKeyController regKeyController = new RegKeyController(mainPane.getScene());
-                regKeyController.listen(codeWordFiled , warningText);
-
-            }
-        });
-
-
-        registerButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                if (codeWordFiled.getText().equals("") || codeWordFiled.getText().length() < 6) {
-
-                    warningText.setVisible(true);
-                    codeWordFiled.setStyle("-fx-background-color: #ff9800;");
-
-                } else {
-
-                    CryptoManager cryptoManager = CryptoManager.getInstance();
-                    cryptoManager.setData(codeWordFiled.getText());
-                    cryptoManager.writeCryptoWord();
-
-                    registerButton.getScene().getWindow().hide();
+                    RegKeyController regKeyController = new RegKeyController(mainPane.getScene());
+                    regKeyController.listen(codeWordFiled, warningText);
 
                 }
+            });
 
-            }
-        });
+
+            registerButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+
+                    if (codeWordFiled.getText().equals("") || codeWordFiled.getText().length() < 6) {
+
+                        warningText.setVisible(true);
+                        codeWordFiled.setStyle("-fx-border-color: #f83719; -fx-border-width: 0.7; -fx-border-radius: 2");
+
+                    } else {
+
+                        CryptoManager cryptoManager = CryptoManager.getInstance();
+                        cryptoManager.setData(codeWordFiled.getText());
+                        cryptoManager.writeCryptoWord();
+
+                        registerButton.getScene().getWindow().hide();
+
+                        Platform.runLater(() -> WinManager.loadWindow("/fxml/simpleDisign.fxml"));
+
+
+                    }
+
+                }
+            });
+
+        }catch (Exception e){
+
+
+            System.out.println("ERROR IN THE APP WINDOW (" + e + "):(" + this.getClass() + ")");
+
+        }
 
 
 
@@ -115,7 +127,7 @@ public class RegController {
                     if (field.getText().equals("") || field.getText().length() < 6) {
 
                         text.setVisible(true);
-                        field.setStyle("-fx-background-color: #ff9800;");
+                        field.setStyle("-fx-border-color: #f83719; -fx-border-width: 0.7; -fx-border-radius: 2");
 
                     } else {
 
@@ -123,6 +135,8 @@ public class RegController {
                         cryptoManager.writeCryptoWord();
 
                         scene.getWindow().hide();
+                        Platform.runLater(() -> WinManager.loadWindow("/fxml/simpleDisign.fxml"));
+
 
                     }
                 }

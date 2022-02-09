@@ -1,9 +1,29 @@
 package logic;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class Pass {
+
+
+    /**
+
+     @date : 09:02:2022
+     @author : Niki-afk
+     @info :
+
+     This class was created to store data about the password, namely
+     the password number, password name, link, and the password itself.
+     This class is a POJO class for working with tables in JavaFx
+
+
+
+
+     */
+
 
 
     // POJO OBJECT CLASS
@@ -48,6 +68,9 @@ public class Pass {
 
 
     public String format(){
+
+        // This method accepts a formatted data string containing password information.
+        // FORMAT : <>[][]{}{}
 
 
         return  "<" + this.number +">[" + this.namePassword + "][" + this.linkP + "]{" + this.date + "}{" + this.pass + "}";
@@ -94,13 +117,28 @@ public class Pass {
     }
 
     public String getPASSWORD() {
-        return pass;
+
+        // In order not to display the password in the table, this method returns it in a hidden form
+
+        String i = "";
+        for (int x = 0; x < this.pass.length(); x++){
+
+            i += "●";
+        }
+
+
+        return i;
     }
 
 
-    // add method copyPass(ClickBoardContent content);
-
     public void copy(){
+
+        // This method copies the password in its original form
+
+
+        StringSelection stringSelection = new StringSelection(this.pass);
+        Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clipboard.setContents(stringSelection, null);
 
 
     }

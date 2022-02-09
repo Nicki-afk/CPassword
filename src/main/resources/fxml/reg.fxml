@@ -46,8 +46,8 @@
                   <Font name="Consolas" size="12.0" />
                </font>
             </Text>
-            <TextField fx:id="codeWordFiled" layoutX="191.0" layoutY="241.0" prefHeight="25.0" prefWidth="191.0" />
-            <Text fx:id="warningText" fill="#ff9800" layoutX="164.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CODE WORD MUST BE AT LEAST 6 CHARACTERS" textAlignment="CENTER" visible="false">
+            <TextField fx:id="codeWordFiled" layoutX="191.0" layoutY="241.0" prefHeight="25.0" prefWidth="191.0" style="-fx-border-color: black; -fx-border-radius: 2; -fx-border-width: 0.7;" />
+            <Text fx:id="warningText" fill="#f83719" layoutX="164.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="CODE WORD MUST BE AT LEAST 6 CHARACTERS" textAlignment="CENTER" visible="false">
                <font>
                   <Font name="Consolas" size="12.0" />
                </font>

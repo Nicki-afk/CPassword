@@ -39,44 +39,40 @@ public class SController {
     @FXML
     void initialize() {
 
-        versionText.setText(PSystem.getVersion());
+
+        try {
+
+            versionText.setText(PSystem.getVersion());
 
 
-
-        exitButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                System.exit(0);
-            }
-        });
-
-
-        sinUpButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            exitButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    System.exit(0);
+                }
+            });
 
 
+            sinUpButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
 
 
+                    CryptoManager manager = CryptoManager.getInstance();
+                    manager.setData(codeWordFiled.getText());
+                    manager.writeCryptoWord();
+
+                    sinUpButton.getScene().getWindow().hide();
 
 
-//                Encrypt encrypt = new Encrypt();
-//                FileManager fileManager = new FileManager(arr , encrypt.encrypt(codeWordFiled.getText()));
-//                fileManager.createUser(); fileManager.write();
-//
+                }
+            });
 
-//                Encrypt encrypt = Encrypt.getInstance(codeWordFiled.getText());
-//                encrypt.encrypt();
+        }catch (Exception e){
 
-                CryptoManager manager = CryptoManager.getInstance();
-                manager.setData(codeWordFiled.getText());
-                manager.writeCryptoWord();
+            System.out.println("ERROR IN THE APP WINDOW (" + e + "):(" + this.getClass() + ")");
 
-                sinUpButton.getScene().getWindow().hide();
-
-
-            }
-        });
+        }
 
 
 

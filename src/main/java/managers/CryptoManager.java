@@ -22,6 +22,31 @@ public class CryptoManager extends Crypto{
 
     // Nicki-afk
 
+
+    /**
+
+     @date : 09:02:2022
+     @author : Niki-afk
+     @info:
+
+     This class is responsible for formatting information and writing this information
+     to system files, as well as reading and converting information to its original form.
+     The class actively works with the file system, namely, it writes and reads data
+     from files. This class inherits from the parent class Crypto , this is done in order
+     to unload the class and shift some of the responsibility for encryption to the parent
+     class, and also to comply with OOP conventions. Also, this class is single and uses the
+     singleton pattern, since this class is used in various other classes of the program, and
+     contains common information for all auxiliary classes
+
+
+
+
+     */
+
+
+
+
+
     private ArrayList<String>records = new ArrayList<>();
     private ArrayList<String>passwords = new ArrayList<>();
     private ObservableList<Pass>passwordsList = FXCollections.observableArrayList();
@@ -87,6 +112,8 @@ public class CryptoManager extends Crypto{
                 writeBytes("user/base.txt" , salt);
                 writeBytes("user/base.txt" , ivParameters);
                 readRecords("user/base.txt" , records);
+
+
             }else{
 
                 // READ SYS FILES
@@ -102,7 +129,8 @@ public class CryptoManager extends Crypto{
             }
 
         }catch (Exception e){
-            e.printStackTrace();
+
+            System.err.println("ERROR WHEN READING OR CREATING SYSTEM FILES ( " + e + " ):(" + this.getClass() + ")");
         }
 
     }
@@ -113,6 +141,8 @@ public class CryptoManager extends Crypto{
 
         try{
 
+
+            // CHECKING CODE WORD
 
             String codeWord = records.get(2);
             MessageDigest digest = MessageDigest.getInstance("SHA-512");
@@ -127,7 +157,8 @@ public class CryptoManager extends Crypto{
 
         }catch (Exception e){
 
-            e.printStackTrace();
+
+            System.err.println("CODEWORD VERIFICATION ERROR (" + e + "):(" + this.getClass() + ")");
         }
 
 
@@ -138,10 +169,25 @@ public class CryptoManager extends Crypto{
 
 
 
+    // WRITE METHOD
+
     @Override
     public void writeBytes(String file , byte[]data){
 
 
+        /**
+
+         @explanation :
+
+         I made the process of reading and writing to the file in different blocks, because
+         if they are initialized in the same try-width-resources block, the write stream will
+         run faster anyway, thereby deleting all data from the file.
+
+
+         */
+
+
+        // READ BLOCK
         try(
                 BufferedReader reader = new BufferedReader(new FileReader(file))
 
@@ -160,6 +206,8 @@ public class CryptoManager extends Crypto{
             }
             local.add(hesh);
 
+
+            // WRITE BLOCK
             try(
 
                     BufferedWriter writer = new BufferedWriter(new FileWriter(file));
@@ -182,7 +230,9 @@ public class CryptoManager extends Crypto{
 
         }catch (Exception e){
 
-            e.printStackTrace();
+
+            System.err.println("ERROR WHEN WRITING DATA TO FILE (" + e + "):(" + this.getClass() + ")");
+
         }
 
     }
@@ -204,6 +254,8 @@ public class CryptoManager extends Crypto{
     @Override
     public void writeCryptoWord(){
 
+        // WRITING CODE-WORD
+
         try(
                 BufferedWriter writer = new BufferedWriter(new FileWriter("user/base.txt"))
 
@@ -211,7 +263,8 @@ public class CryptoManager extends Crypto{
         ){
 
 
-            byte[]recordBytes = encrypt(this.data , salt);
+
+            byte[]recordBytes = encrypt(this.word , salt);   // Method encrypt() is method Parent class Crypto
 
             records.add(DatatypeConverter.printHexBinary(recordBytes));
 
@@ -226,7 +279,9 @@ public class CryptoManager extends Crypto{
 
         }catch (Exception e){
 
-            e.printStackTrace();
+
+            System.out.println("ERROR WHEN WRITING CODEWORD TO FILE (" + e + "):(" + this.getClass() + ")");
+
         }
     }
 
@@ -254,7 +309,9 @@ public class CryptoManager extends Crypto{
             writer.flush();
 
         }catch (Exception e){
-            e.printStackTrace();
+
+
+            System.err.println("ERROR WRITE PASSWORD TO FILE (" + e + "):(" + this.getClass() + ")");
         }
 
     }
@@ -275,19 +332,19 @@ public class CryptoManager extends Crypto{
 
 
         }catch (Exception e){
-            e.printStackTrace();
+
+            System.err.println("ERROR READING FILE (" + filePath + ")(" + e + ")(" + this.getClass() + ")");
+
+
         }
     }
 
 
 
-    // rename to readPAss();
     public boolean transform(){
 
 
         Decrypt decrypt = new Decrypt(this.word , passwords , this.salt , new IvParameterSpec(ivParameters));
-
-
         ObservableList<Pass>local = decrypt.dec();
 
 
@@ -312,13 +369,15 @@ public class CryptoManager extends Crypto{
         return salt;
     }
 
-    public String getData() {
-        return data;
+
+    public void setData(String word) {
+        this.word =  word;
+        setCryptoData(word);
     }
 
-    public void setData(String data) {
-        this.data = data;
-        setCryptoData(data);
+
+    public void  setCodeWord(String word){
+        this.word = word;
     }
 
 

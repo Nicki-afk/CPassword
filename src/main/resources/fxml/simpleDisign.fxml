@@ -54,9 +54,9 @@
                   <TableColumn fx:id="passwordColumn" prefWidth="102.66668701171875" text="PASSWORD" />
               </columns>
             </TableView>
-            <TextField fx:id="selectedNameFiled" editable="false" layoutX="16.0" layoutY="15.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
-            <TextField fx:id="selectedLinkFiled" editable="false" layoutX="16.0" layoutY="46.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
-            <TextField fx:id="selectedDateFiled" editable="false" layoutX="16.0" layoutY="77.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="selectedNameFiled" alignment="CENTER" editable="false" layoutX="16.0" layoutY="15.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="selectedLinkFiled" alignment="CENTER" editable="false" layoutX="16.0" layoutY="46.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="selectedDateFiled" alignment="CENTER" editable="false" layoutX="16.0" layoutY="77.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
             <Button fx:id="deleteButton" disable="true" layoutX="16.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="32.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;" textFill="#f31919">
                <font>
                   <Font size="11.0" />
@@ -71,7 +71,7 @@
             </Button>
             <TextField fx:id="saveNameFiled" alignment="CENTER" layoutX="17.0" layoutY="210.0" prefHeight="25.0" prefWidth="129.0" promptText="NAME PASSWORD" style="-fx-border-color: black; -fx-border-radius: 4;" />
             <TextField fx:id="saveLinkFiled" alignment="CENTER" layoutX="17.0" layoutY="241.0" prefHeight="25.0" prefWidth="129.0" promptText="LINK" style="-fx-border-color: black; -fx-border-radius: 4;" />
-            <TextField fx:id="saveDateFiled" alignment="CENTER" layoutX="17.0" layoutY="272.0" prefHeight="25.0" prefWidth="129.0" promptText="DATE" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="saveDateFiled" alignment="CENTER" editable="false" layoutX="17.0" layoutY="272.0" prefHeight="25.0" prefWidth="129.0" promptText="DATE" style="-fx-border-color: black; -fx-border-radius: 4;" />
             <TextField fx:id="savePasswordFiled" alignment="CENTER" layoutX="17.0" layoutY="304.0" prefHeight="25.0" prefWidth="129.0" promptText="PASSWORD" style="-fx-border-color: black; -fx-border-radius: 4;" />
             <Button fx:id="copyButton" layoutX="52.0" layoutY="140.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="33.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
                <font>
@@ -112,7 +112,7 @@
                   <Font size="14.0" />
                </font>
             </Label>
-            <TextField fx:id="recomendedFiled" editable="false" layoutX="18.0" layoutY="382.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <TextField fx:id="recomendedFiled" alignment="CENTER" editable="false" layoutX="18.0" layoutY="382.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
             <Button fx:id="reloadButton" layoutX="19.0" layoutY="413.0" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" prefHeight="26.0" prefWidth="33.0" style="-fx-border-color: black; -fx-border-radius: 5; -fx-background-radius: 5;">
                <font>
                   <Font name="Consolas" size="12.0" />
@@ -149,7 +149,7 @@
                   </ImageView>
                </graphic>
             </Button>
-            <PasswordField fx:id="selectedPasswordFiled" layoutX="17.0" layoutY="108.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
+            <PasswordField fx:id="selectedPasswordFiled" alignment="CENTER" layoutX="17.0" layoutY="108.0" prefHeight="25.0" prefWidth="129.0" style="-fx-border-color: black; -fx-border-radius: 4;" />
       </children>
     </AnchorPane>
   </children>

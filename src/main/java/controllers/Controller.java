@@ -56,74 +56,73 @@ public class Controller {
     @FXML
     void initialize() {
 
-
-        versionText.setText(PSystem.getVersion());
-
-        cryptoManager.init();
+        try {
 
 
-        if(cryptoManager.getRecords().size() < 3){
+            versionText.setText(PSystem.getVersion());
 
-            settingsButton.setDisable(true);
-            inputButton.setDisable(true);
-            codeWordFiled.setDisable(true);
-            warningText.setVisible(true);
-
-        }else{
-
-            registerButton.setDisable(true);
-
-        }
+//        cryptoManager.init();
 
 
-        mainPane.setOnMouseEntered(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
+            if (cryptoManager.getRecords().size() < 3) {
 
-                KeyController keyController = new KeyController(mainPane.getScene(),  codeWordFiled);
-                keyController.listen();
+                settingsButton.setDisable(true);
+                inputButton.setDisable(true);
+                codeWordFiled.setDisable(true);
+                warningText.setVisible(true);
+
+            } else {
+
+                registerButton.setDisable(true);
 
             }
-        });
-
-        registerButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
 
 
-                registerButton.getScene().getWindow().hide();
-                WinManager.loadWindow("/fxml/reg.fxml");
+            mainPane.setOnMouseEntered(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
 
+                    KeyController keyController = new KeyController(mainPane.getScene(), codeWordFiled);
+                    keyController.listen();
 
-            }
-        });
-
-        inputButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-
-                if(!cryptoManager.isCodeWord(codeWordFiled.getText())){
-
-                    codeWordFiled.setStyle("-fx-border-radius : 2; -fx-border-color: red; -fx-border-width: 1;");
-
-                }else{
-
-
-                    inputButton.getScene().getWindow().hide();
-                    WinManager.loadWindow("/fxml/loadWindow.fxml");
                 }
+            });
 
-            }
-        });
-
-
-
-
+            registerButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
 
 
+                    registerButton.getScene().getWindow().hide();
+                    WinManager.loadWindow("/fxml/reg.fxml");
 
 
+                }
+            });
 
+            inputButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+
+                    if (!cryptoManager.isCodeWord(codeWordFiled.getText())) {
+
+                        codeWordFiled.setStyle("-fx-border-radius : 2; -fx-border-color: red; -fx-border-width: 1;");
+
+                    } else {
+
+
+                        inputButton.getScene().getWindow().hide();
+                        WinManager.loadWindow("/fxml/loadWindow.fxml");
+                    }
+
+                }
+            });
+
+        }catch (Exception e){
+
+
+            System.out.println("ERROR IN THE APP WINDOW (" + e + "):(" + this.getClass() + ")");
+        }
 
 
 

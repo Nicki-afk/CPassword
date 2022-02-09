@@ -8,6 +8,24 @@ import java.security.SecureRandom;
 public abstract class Crypto {
 
 
+    /**
+
+     @date : 09:02:2022
+     @author : Niki-afk
+     @info :
+
+     The Crypto class is the parent class of the CryptoManager class.
+     This class contains part of the abstracted logic that is implemented in the
+     heir class, as well as part of the logic (mainly encryption) that is implemented
+     directly in this class
+
+
+
+     */
+
+
+
+
     private String data;
     private byte[]code_word;
     private MessageDigest digest ;
@@ -38,6 +56,7 @@ public abstract class Crypto {
 
 
 
+    // CIPHER METHOD
     protected byte[] encrypt(String inWord , byte[]salt){
 
         try {
@@ -48,7 +67,9 @@ public abstract class Crypto {
 
             return digest.digest(inWord.getBytes(StandardCharsets.UTF_8));
         }catch (Exception e){
-            e.printStackTrace();
+
+            System.err.println("ENCRYPTION ERROR (" + e + "):(" + this.getClass() + ")");
+
         }
 
         return new byte[]{0};

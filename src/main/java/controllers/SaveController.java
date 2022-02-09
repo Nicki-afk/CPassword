@@ -1,5 +1,8 @@
 package controllers;
 
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -13,7 +16,9 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import logic.PSystem;
 import logic.Pass;
+import logic.Password;
 import managers.CryptoManager;
 
 public class SaveController {
@@ -93,79 +98,138 @@ public class SaveController {
     @FXML
     private PasswordField selectedPasswordFiled;
 
+
+    Pass local = new Pass();
+
     @FXML
     void initialize() {
 
 
-        CryptoManager manager = CryptoManager.getInstance();
-        ObservableList<Pass>passwords = manager.getPasswordsList();
+        try {
 
 
-        numberColumn.setCellValueFactory(new PropertyValueFactory<Pass, Integer>("N"));
-        nameColumn.setCellValueFactory(new PropertyValueFactory<Pass , String>("NAME"));
-        linkColumn.setCellValueFactory(new PropertyValueFactory<Pass , String>("LINK"));
-        dateColumn.setCellValueFactory(new PropertyValueFactory<Pass , String>("DATE"));
-        passwordColumn.setCellValueFactory(new PropertyValueFactory<Pass , String>("PASSWORD"));
-
-        mainTable.setItems(passwords);
+            CryptoManager manager = CryptoManager.getInstance();
+            ObservableList<Pass> passwords = manager.getPasswordsList();
 
 
-        saveButton.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
+            numberColumn.setCellValueFactory(new PropertyValueFactory<Pass, Integer>("N"));
+            nameColumn.setCellValueFactory(new PropertyValueFactory<Pass, String>("NAME"));
+            linkColumn.setCellValueFactory(new PropertyValueFactory<Pass, String>("LINK"));
+            dateColumn.setCellValueFactory(new PropertyValueFactory<Pass, String>("DATE"));
+            passwordColumn.setCellValueFactory(new PropertyValueFactory<Pass, String>("PASSWORD"));
 
-                if(
-                        saveNameFiled.getText().equals("") ||
-                        saveLinkFiled.getText().equals("") ||
-                        saveDateFiled.getText().equals("") ||
-                        savePasswordFiled.getText().equals("")
-                ){
+            mainTable.setItems(passwords);
 
-
-                            saveNameFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
-                            saveLinkFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
-                            saveDateFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
-                            savePasswordFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
+            saveDateFiled.setText(PSystem.DATE);
+            recomendedFiled.setText(new Password().generatePassword());
 
 
+            saveButton.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
 
-                }else{
+                    if (
+                            saveNameFiled.getText().equals("") ||
+                                    saveLinkFiled.getText().equals("") ||
+                                    saveDateFiled.getText().equals("") ||
+                                    savePasswordFiled.getText().equals("")
+                    ) {
 
 
-                    saveNameFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
-                    saveLinkFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
-                    saveDateFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
-                    savePasswordFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
+                        saveNameFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
+                        saveLinkFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
+                        saveDateFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
+                        savePasswordFiled.setStyle("-fx-border-color : red; -fx-border-radius:4;");
 
 
-                    Pass pass = new Pass();
+                    } else {
 
-                    pass
-                            .setNumber(manager.passwordSize())
-                            .setNamePassword(saveNameFiled.getText())
-                            .setLinkP(saveLinkFiled.getText())
-                            .setDate(saveDateFiled.getText())
-                            .setPass(savePasswordFiled.getText());
 
-                    manager.writeCryptoPass(pass);
-                    passwords.add(pass);
+                        saveNameFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
+                        saveLinkFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
+                        saveDateFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
+                        savePasswordFiled.setStyle("-fx-border-color : black; -fx-border-radius:4;");
 
+
+                        Pass pass = new Pass();
+
+                        pass
+                                .setNumber(manager.passwordSize())
+                                .setNamePassword(saveNameFiled.getText())
+                                .setLinkP(saveLinkFiled.getText())
+                                .setDate(saveDateFiled.getText())
+                                .setPass(savePasswordFiled.getText());
+
+                        manager.writeCryptoPass(pass);
+                        passwords.add(pass);
+
+
+                    }
 
 
                 }
+            });
 
 
+            mainTable.setOnMouseClicked(event -> {
+
+                try {
+
+                    local = mainTable.getSelectionModel().getSelectedItem();
+                    selectedNameFiled.setText(mainTable.getSelectionModel().getSelectedItem().getNAME());
+                    selectedLinkFiled.setText(mainTable.getSelectionModel().getSelectedItem().getLINK());
+                    selectedDateFiled.setText(mainTable.getSelectionModel().getSelectedItem().getDATE());
+                    selectedPasswordFiled.setText(mainTable.getSelectionModel().getSelectedItem().getPASSWORD());
+                }catch (Exception e){
+
+                    System.out.println("ERROR IN THE APP WINDOW (" + e + "):(" + this.getClass() + ")");
+                }
+
+            });
 
 
-            }
-        });
+            copyButton.setOnAction(event -> {
 
 
+                local.copy();
 
 
+            });
+
+            reloadButton.setOnAction(event -> {
+
+                recomendedFiled.setText(new Password().generatePassword());
+                recomendedFiled.setStyle("-fx-border-radius:4; -fx-border-color:black;");
+
+            });
+
+            copyRecPasswordFiled.setOnAction(event -> {
 
 
+                recomendedFiled.setStyle("-fx-border-radius:4; -fx-border-color:#50FF18;");
 
+                StringSelection stringSelection = new StringSelection(recomendedFiled.getText());
+                Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+                clipboard.setContents(stringSelection, null);
+
+            });
+
+            clearButton.setOnAction(event -> {
+
+
+                saveNameFiled.setText("");
+                saveLinkFiled.setText("");
+                savePasswordFiled.setText("");
+
+
+            });
+
+        }catch (Exception e){
+
+
+            System.out.println("ERROR IN THE APP WINDOW (" + e + "):(" + this.getClass() + ")");
+
+        }
 
 
 

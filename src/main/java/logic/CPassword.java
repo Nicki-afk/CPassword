@@ -10,6 +10,23 @@ import static org.passay.CharacterOccurrencesRule.ERROR_CODE;
 public abstract class CPassword  {
 
 
+    /**
+
+     @date : 09:02:2022
+     @author : Nicki-afk
+     @info  :
+
+     THIS ABSTRACT CLASS ACTS AS A DATA STORAGE FOR THE SUBSEQUENT USE
+     OF THIS DATA IN THE SUCCESSOR CLASS (POSSIBLE TO BE REMOVED SOON)
+
+
+     THIS CLASS USES THE org.passay LIBRARY IN ORDER TO NOT REINVENT THE BIKE .
+     LIBRARY CONNECTED WITH maven
+
+
+
+     */
+
 
     private String password;
     protected CharacterData lowerCaseChars = EnglishCharacterData.LowerCase , upperCaseChars = EnglishCharacterData.UpperCase;
@@ -43,13 +60,6 @@ public abstract class CPassword  {
 
     public CPassword(){}
 
-    public int howStrongIsThePassword(String password){
-
-
-        return 0;
-
-
-    }
 
     public int howStrongIsThePassword(){
 

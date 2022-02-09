@@ -16,6 +16,22 @@ import java.util.ArrayList;
 public class Decrypt {
 
 
+    /**
+
+
+
+     @date : 09:02:2022
+     @author : Niki-afk
+     @info :
+     This class is used to encrypt the password and turn it into a formatted
+     string that the Pass object accepts (possibly removed soon)
+
+
+
+
+     */
+
+
 
     private ArrayList<String> dataList;
     private String keyWord ;
@@ -26,7 +42,7 @@ public class Decrypt {
     private String encWord;
 
 
-
+   // At the entrance is a sheet with encrypted passwords, as well as the parameters necessary for decryption
     public Decrypt(String keyWord , ArrayList<String>dataList ,byte[]salt , IvParameterSpec spec ){
 
         this.keyWord = keyWord;
@@ -40,19 +56,15 @@ public class Decrypt {
 
 
 
-
-
-
-
     public ObservableList<Pass> dec(){
 
         try {
 
 
-            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");
-            KeySpec spec = new PBEKeySpec(this.keyWord.toCharArray(), salt, 65536, 256);
-            SecretKey tmp = factory.generateSecret(spec);
-            SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
+            SecretKeyFactory factory = SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1");  // Create KeyFactory
+            KeySpec spec = new PBEKeySpec(this.keyWord.toCharArray(), salt, 65536, 256); //Creating a key by code word
+            SecretKey tmp = factory.generateSecret(spec);    // Generate Key
+            SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES"); // init secret key
 
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.DECRYPT_MODE , secret , this.spec);
@@ -77,7 +89,7 @@ public class Decrypt {
 
 
         }catch (Exception e){
-            e.printStackTrace();
+            System.out.println("DATA DECRYPTION ERROR (" + e + "):(" + this.getClass() + ")");
         }
 
         return null;

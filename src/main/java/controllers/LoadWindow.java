@@ -124,7 +124,8 @@ public class LoadWindow {
 
         }catch (Exception e){
 
-            e.printStackTrace();
+            System.out.println("ERROR IN THE APP WINDOW (" + e + "):(" + this.getClass() + ")");
+
         }
 
 

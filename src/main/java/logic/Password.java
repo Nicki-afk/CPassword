@@ -12,6 +12,27 @@ import managers.AnimManager;
 public class Password extends CPassword {
 
 
+    /**
+
+     @date : 09:02:2022
+     @author : Niki-afk
+     @info  :
+     This class is a descendant of the abstract class Cpassword . The class
+     uses the data of the parent class for password generation (may be rewritten)
+
+
+
+
+
+     */
+
+
+
+
+
+
+
+
     private String pass;
     private Scene scene;
     private TextField filed;
@@ -19,35 +40,11 @@ public class Password extends CPassword {
     private Text text;
     private AnimManager animManager;
 
-    public Password(Scene scene , TextField field   , Text text){
-        super();
-        this.scene = scene;
-        this.text = text;
-        this.filed = field;
 
-    }
 
     public Password(){}
 
 
-    public void listen(){
-
-        this.scene.setOnKeyPressed(new EventHandler<KeyEvent>() {
-            @Override
-            public void handle(KeyEvent event) {
-
-                if(event.getCode() == KeyCode.ENTER){
-                    setPass(filed.getText());
-                    percentage = howStrongIsThePassword();
-                    animManager = new AnimManager(text , percentage);
-                    animManager.start();
-
-                }
-
-
-            }
-        });
-    }
 
 
 

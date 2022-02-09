@@ -13,6 +13,19 @@ import java.security.spec.KeySpec;
 public class Encrypt {
 
 
+    /**
+
+     @date : 09:02:2022
+     @author : Niki-afk
+     @info :
+
+     This class is intended for password encryption, as well as the Decrypt class will probably be removed
+
+
+
+     */
+
+
 
 
     private Pass pass;
@@ -43,7 +56,6 @@ public class Encrypt {
             KeySpec spec = new PBEKeySpec(this.keyWord.toCharArray(), salt, 65536, 256);
             SecretKey tmp = factory.generateSecret(spec);
             SecretKey secret = new SecretKeySpec(tmp.getEncoded(), "AES");
-            System.out.println("ENC_KEY : " + DatatypeConverter.printHexBinary(secret.getEncoded()));
 
             Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
             cipher.init(Cipher.ENCRYPT_MODE , secret , this.spec);
@@ -59,7 +71,9 @@ public class Encrypt {
 
 
         }catch (Exception e){
-            e.printStackTrace();
+
+
+            System.err.println("DATA ENCRYPTION ERROR (" + e + "):(" + this.getClass() + ")");
         }
 
         return "";

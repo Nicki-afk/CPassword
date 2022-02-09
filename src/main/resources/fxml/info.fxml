@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="411.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.InfoController">
+   <children>
+      <Pane layoutX="214.0" layoutY="43.0" prefHeight="63.0" prefWidth="154.0" style="-fx-border-color: black; -fx-border-radius: 4;">
+         <children>
+            <Label layoutX="19.0" layoutY="7.0" prefHeight="50.0" prefWidth="117.0" text="CPass">
+               <font>
+                  <Font name="Arial Bold" size="36.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TextArea editable="false" layoutX="27.0" layoutY="123.0" prefHeight="243.0" prefWidth="550.0" text="                                                           What is App CPass ?&#10;&#10;The CPass application was created to store passwords conveniently and securely on your local computer. The application was developed by one person. The difference of this application is the complete absence of data collection, both deognastic and other user data. The program stores user data and passwords locally in system files. At the first start , the program creates system files and then uses them for work . In case of accidental deletion, or unforeseen circumstances in which system files are deleted or changed, the author of the program is not responsible for the loss or change of user data. Also, the author of the program is not responsible in case of an unforeseen failure of the program, and loss of data as a result of the failure.&#10;&#10;&#10;                                         How does the program protect your data?&#10;&#10;When you first start the program, the program prompts you to set a code word, then the program will ask you for a code word each time you enter the program. If you have lost the code word , the author is not responsible for the loss of data . Remember the code word should be known only to you , and should not be distributed to third parties for security purposes . In case of disclosing the code word to third parties, the author is not responsible for the loss, transfer, change of user data.&#10;&#10;&#10;                                                       About program design&#10;&#10;Icons from the site (https://www.flaticon.com) were used to create the design of the program. &#10;All icons belong to the creators of these icons, namely:&#10;&#10;  - Authorization icon    :  (https://www.flaticon.com/en/authors/pixel-perfect)&#10;- Reload icon                 :  (https://www.flaticon.com/ru/authors/pixelmeetup)&#10;- Lock icon                     :  (https://www.flaticon.com/ru/authors/kosonicon)&#10;- Question mark icon     :  (https://www.flaticon.com/ru/authors/anas-mannaa)&#10;- Settings icon                :  (https://www.flaticon.com/ru/authors/debi-alpa-nugraha)&#10;- Copy icon                     :  (https://www.flaticon.com/ru/authors/google)&#10;- Trash can icon              :  (https://www.flaticon.com/ru/authors/freepik)&#10;- Magnifying glass icon  :  (https://www.flaticon.com/ru/authors/freepik)&#10;&#10;&#10;&#10;The program was created by a young programmer from Moldova. The program development period took 2 months and one week. The entire source code of the program was written by one person during the entire development period. The design of the application was also developed by this same programmer. The source code of the application can be found on the github website at the link (https://github.com/Nicki-afk/CPassword) . To develop the program, the Java programming language was used, and the JavaFx framework, as well as an application tool for developing a GUI interface SceneBuilder from Gulon companies&#10;&#10;                                                                  Attention!!!&#10;&#10;THE AUTHOR OF THE PROGRAM DOES NOT GUARANTEE THE COMPLETE SAFETY OF THE PROGRAM, YOU USE THIS PROGRAM AT YOUR OWN RISK. THE AUTHOR IS NOT RESPONSIBLE FOR THE LOSS OF YOUR CONFIDENTIAL DATA DURING FORCE MAJOR EVENT&#10;&#10;&#10;&#10;&#10;" wrapText="true" />
+      <Button fx:id="enterButton" disable="true" layoutX="533.0" layoutY="372.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="44.0" text="--&gt;" />
+      <CheckBox fx:id="checkBoxRead" layoutX="27.0" layoutY="376.0" mnemonicParsing="false" text="I Read" />
+   </children>
+</AnchorPane>
