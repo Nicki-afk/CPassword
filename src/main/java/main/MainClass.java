@@ -4,11 +4,8 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
-import logic.Pass;
 import managers.CryptoManager;
 
 import java.io.IOException;
@@ -21,8 +18,8 @@ public class MainClass extends Application {
 
 
 
-
          launch();
+
 
 
 

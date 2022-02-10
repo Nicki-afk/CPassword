@@ -20,6 +20,7 @@ import logic.PSystem;
 import logic.Pass;
 import logic.Password;
 import managers.CryptoManager;
+import managers.WinManager;
 
 public class SaveController {
 
@@ -220,6 +221,15 @@ public class SaveController {
                 saveNameFiled.setText("");
                 saveLinkFiled.setText("");
                 savePasswordFiled.setText("");
+
+
+            });
+
+
+            settingsPasswordButton.setOnAction(event -> {
+
+                WinManager.loadWindow();
+
 
 
             });

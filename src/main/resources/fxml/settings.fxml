@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Slider?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="261.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controllers.SettingsPasswordController">
+  <tabs>
+    <Tab fx:id="generateTab" text="GENERATE">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="218.0" prefWidth="331.0">
+               <children>
+                  <TextField fx:id="genTextFiled" alignment="CENTER" editable="false" layoutX="14.0" layoutY="35.0" prefHeight="25.0" prefWidth="158.0" />
+                  <CheckBox fx:id="spCheckBox" layoutX="14.0" layoutY="76.0" mnemonicParsing="false" selected="true" text="!@#$%^&amp;*()_+=" />
+                  <CheckBox fx:id="numCheckBox" layoutX="151.0" layoutY="76.0" mnemonicParsing="false" selected="true" text="1234567890" />
+                  <Slider fx:id="slider" layoutX="14.0" layoutY="117.0" max="20.0" prefHeight="14.0" prefWidth="187.0" value="12.0" />
+                  <TextField fx:id="percentageFiled" alignment="CENTER" layoutX="212.0" layoutY="112.0" prefHeight="25.0" prefWidth="28.0" text="12" />
+                  <Button fx:id="copyButton" layoutX="174.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/free-icon-copy-content-60990.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="reloadButton" layoutX="208.0" layoutY="35.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="25.0">
+                     <graphic>
+                        <ImageView fitHeight="16.0" fitWidth="16.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/free-icon-loading-714456.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+               </children></AnchorPane>
+      </content>
+    </Tab>
+    <Tab fx:id="passwordTab" text="PASSWORD-WORD">
+      <content>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+               <children>
+                  <TextField fx:id="passTextFiled" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="226.0" />
+                  <TextField fx:id="recPassFiled" editable="false" layoutX="15.0" layoutY="58.0" prefHeight="25.0" prefWidth="159.0" />
+                  <Button fx:id="pReloadButton" layoutX="177.0" layoutY="58.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/free-icon-loading-714456.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <Button fx:id="pCopyButton" layoutX="210.0" layoutY="58.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0">
+                     <graphic>
+                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/free-icon-copy-content-60990.png" />
+                           </image>
+                        </ImageView>
+                     </graphic>
+                  </Button>
+                  <CheckBox fx:id="pSpCheckBox" layoutX="155.0" layoutY="129.0" mnemonicParsing="false" text="!@#$%^&amp;*()" />
+                  <CheckBox fx:id="pNumCheckBox" layoutX="155.0" layoutY="103.0" mnemonicParsing="false" text="1234567890" />
+                  <CheckBox disable="true" layoutX="15.0" layoutY="103.0" mnemonicParsing="false" selected="true" text="ABCD...YZ" />
+                  <CheckBox disable="true" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" selected="true" text="abc...yz" />
+               </children></AnchorPane>
+      </content>
+    </Tab>
+  </tabs>
+</TabPane>
