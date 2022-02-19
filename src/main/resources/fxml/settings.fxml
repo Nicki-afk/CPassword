@@ -10,7 +10,7 @@
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="261.0" tabClosingPolicy="UNAVAILABLE" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.171" fx:controller="controllers.SettingsPasswordController">
+<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="197.0" prefWidth="261.0" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.SettingsPasswordController">
   <tabs>
     <Tab fx:id="generateTab" text="GENERATE">
       <content>
@@ -46,8 +46,8 @@
       <content>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                <children>
-                  <TextField fx:id="passTextFiled" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="226.0" />
-                  <TextField fx:id="recPassFiled" editable="false" layoutX="15.0" layoutY="58.0" prefHeight="25.0" prefWidth="159.0" />
+                  <TextField fx:id="passTextFiled" alignment="CENTER" layoutX="14.0" layoutY="23.0" prefHeight="25.0" prefWidth="226.0" />
+                  <TextField fx:id="recPassFiled" alignment="CENTER" editable="false" layoutX="15.0" layoutY="58.0" prefHeight="25.0" prefWidth="159.0" />
                   <Button fx:id="pReloadButton" layoutX="177.0" layoutY="58.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="26.0">
                      <graphic>
                         <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
@@ -66,8 +66,8 @@
                         </ImageView>
                      </graphic>
                   </Button>
-                  <CheckBox fx:id="pSpCheckBox" layoutX="155.0" layoutY="129.0" mnemonicParsing="false" text="!@#$%^&amp;*()" />
-                  <CheckBox fx:id="pNumCheckBox" layoutX="155.0" layoutY="103.0" mnemonicParsing="false" text="1234567890" />
+                  <CheckBox fx:id="pSpCheckBox" layoutX="155.0" layoutY="129.0" mnemonicParsing="false" selected="true" text="!@#$%^&amp;*()" />
+                  <CheckBox fx:id="pNumCheckBox" layoutX="155.0" layoutY="103.0" mnemonicParsing="false" selected="true" text="1234567890" />
                   <CheckBox disable="true" layoutX="15.0" layoutY="103.0" mnemonicParsing="false" selected="true" text="ABCD...YZ" />
                   <CheckBox disable="true" layoutX="15.0" layoutY="129.0" mnemonicParsing="false" selected="true" text="abc...yz" />
                </children></AnchorPane>

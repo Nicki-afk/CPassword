@@ -89,6 +89,15 @@ public class RegController {
                 }
             });
 
+
+            settingsButton.setOnAction(event -> {
+
+
+                WinManager.loadWindow("/fxml/help.fxml");
+
+
+            });
+
         }catch (Exception e){
 
 

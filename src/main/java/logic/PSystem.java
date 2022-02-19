@@ -22,7 +22,7 @@ public class PSystem{
      */
 
 
-    private static final String version = "version-0.0.1.5-09022022";
+    private static final String version = "version-0.0.1.6-11022022";
     private static SimpleDateFormat dateFormat = new SimpleDateFormat("dd:MM:yyyy");
     public static String DATE = dateFormat.format(new Date());
 

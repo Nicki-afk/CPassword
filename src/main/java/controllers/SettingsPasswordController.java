@@ -88,6 +88,7 @@ public class SettingsPasswordController {
 
 
 
+
        reloadButton.setOnAction(event -> {
 
 
@@ -97,11 +98,53 @@ public class SettingsPasswordController {
 
        });
 
+
        copyButton.setOnAction(event -> {
 
            StringSelection stringSelection = new StringSelection(genTextFiled.getText());
            Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
            clipboard.setContents(stringSelection, null);
+
+       });
+
+
+       pReloadButton.setOnAction(event -> {
+
+
+           if(passTextFiled.getText().equals("") || passTextFiled.getText() == null){
+
+               passTextFiled.setStyle("-fx-border-color:red; -fx-border-radius:2; -fx-border-width:0.6;");
+               recPassFiled.setStyle("-fx-border-color:red; -fx-border-radius:2; -fx-border-width:0.6;");
+
+           }else{
+
+               passTextFiled.setStyle("");
+               recPassFiled.setStyle("");
+
+               recPassFiled.setText(password.generatePassword(passTextFiled.getText() , pSpCheckBox.isSelected(), pNumCheckBox.isSelected()));
+
+
+
+           }
+
+
+
+       });
+
+
+
+       pCopyButton.setOnAction(event -> {
+
+
+           StringSelection stringSelection = new StringSelection(recPassFiled.getText());
+           Clipboard clipboard = Toolkit.getDefaultToolkit().getSystemClipboard();
+           clipboard.setContents(stringSelection, null);
+
+
+
+           recPassFiled.setStyle("-fx-border-color:green; -fx-border-radius:2; -fx-border-width:0.6;");
+
+
 
        });
 

@@ -4,8 +4,6 @@ package managers;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import logic.Crypto;
-import logic.Decrypt;
-import logic.Encrypt;
 import logic.Pass;
 import javax.crypto.spec.IvParameterSpec;
 import javax.xml.bind.DatatypeConverter;
@@ -63,7 +61,6 @@ public class CryptoManager extends Crypto{
 
     private CryptoManager(String data){
 
-        super(data);
         this.data = data;
         this.salt = initSalt();
         this.ivParameters = initSalt();
@@ -297,9 +294,9 @@ public class CryptoManager extends Crypto{
 
 
 
-            Encrypt encrypt = new Encrypt(this.word , pass , this.salt , new IvParameterSpec(ivParameters));
+         //   Encrypt encrypt = new Encrypt(this.word , pass , this.salt , new IvParameterSpec(ivParameters));
 
-            passwords.add(encrypt.enc());
+            passwords.add(enc(this.word , pass , this.salt , new IvParameterSpec(ivParameters)));
 
             for(String i : passwords){
 
@@ -344,19 +341,13 @@ public class CryptoManager extends Crypto{
     public boolean transform(){
 
 
-        Decrypt decrypt = new Decrypt(this.word , passwords , this.salt , new IvParameterSpec(ivParameters));
-        ObservableList<Pass>local = decrypt.dec();
-
-
-
-
+       // Decrypt decrypt = new Decrypt(this.word , passwords , this.salt , new IvParameterSpec(ivParameters));
+        ObservableList<Pass>local = dec(this.word , passwords , this.salt , new IvParameterSpec(ivParameters));
 
         if(local != null){
 
             passwordsList = local;
             return true;
-
-
         }
 
         return false;
@@ -372,7 +363,7 @@ public class CryptoManager extends Crypto{
 
     public void setData(String word) {
         this.word =  word;
-        setCryptoData(word);
+        //setCryptoData(word);
     }
 
 

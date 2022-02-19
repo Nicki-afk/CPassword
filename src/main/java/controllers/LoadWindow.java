@@ -2,10 +2,13 @@ package controllers;
 
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
@@ -38,6 +41,10 @@ public class LoadWindow {
     private Button enterButton;
 
     @FXML
+    private ImageView loadImg;
+
+
+    @FXML
     void initialize() {
 
 
@@ -46,6 +53,8 @@ public class LoadWindow {
 
 
         mainPane.setOnMouseEntered(event -> {
+
+
 
             KeyLoger keyLoger = new KeyLoger(mainPane.getScene() , progressBar.getProgress());
             keyLoger.listen();
@@ -56,15 +65,20 @@ public class LoadWindow {
 
 
         Loader loader = new Loader(progressBar);
-        loader.setActions(enterButton , loadText);
+        loader.setActions(enterButton , loadText , loadImg);
         loader.start();
 
 
         enterButton.setOnAction(event -> {
 
-            enterButton.getScene().getWindow().hide();
-            WinManager.loadWindow("/fxml/simpleDisign.fxml");
 
+            enterButton.getScene().getWindow().hide();
+            Platform.runLater(() ->{
+
+
+                WinManager.loadWindow("/fxml/simpleDisign.fxml");
+
+            });
 
 
         });
@@ -84,6 +98,7 @@ public class LoadWindow {
 
     private Button button;
     private Text text;
+    private ImageView view;
 
 
 
@@ -117,6 +132,7 @@ public class LoadWindow {
             }
 
             this.button.setDisable(false);
+            this.view.setVisible(false);
             this.text.setText("PRESS ENTER TO CONTINUE");
             this.text.setLayoutX(209);
 
@@ -131,9 +147,10 @@ public class LoadWindow {
 
     }
 
-    public void setActions(Button button , Text text){
+    public void setActions(Button button , Text text , ImageView view){
         this.button = button;
         this.text = text;
+        this.view = view;
 
 
     }
@@ -168,7 +185,13 @@ public class LoadWindow {
 
 
                 this.scene.getWindow().hide();
-                WinManager.loadWindow("/fxml/simpleDisign.fxml");
+
+                Platform.runLater(() ->{
+
+
+                    WinManager.loadWindow("/fxml/simpleDisign.fxml");
+
+                });
 
 
             }

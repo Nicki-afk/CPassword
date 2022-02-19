@@ -189,11 +189,16 @@ public class SaveController {
             });
 
 
+
+
             copyButton.setOnAction(event -> {
 
+                try {
+                    local.copy();
+                }catch (Exception e){
 
-                local.copy();
-
+                    System.err.println("COPY ERROR (" + e + "):(" + copyButton.getClass() + ")");
+                }
 
             });
 
@@ -224,6 +229,8 @@ public class SaveController {
 
 
             });
+
+
 
 
             settingsPasswordButton.setOnAction(event -> {

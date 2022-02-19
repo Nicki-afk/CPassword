@@ -8,7 +8,7 @@ import managers.AnimManager;
 import java.util.Random;
 
 
-public class Password extends CPassword {
+public class Password {
 
 
     /**
@@ -60,11 +60,12 @@ public class Password extends CPassword {
         StringBuffer buffer = new StringBuffer(word);
 
         Random random = new Random();
+        String paste = "";
 
         if(sp && num){
 
 
-            String paste = "";
+
 
             paste+= spc[random.nextInt(spc.length-1)];
             paste+= spc[random.nextInt(spc.length-1)];
@@ -79,7 +80,7 @@ public class Password extends CPassword {
         }else if(sp && !num){
 
 
-            String paste = "";
+
             paste += spc[random.nextInt(spc.length-1)];
             paste += spc[random.nextInt(spc.length-1)];
 
@@ -92,7 +93,7 @@ public class Password extends CPassword {
         }else if(num && !sp){
 
 
-             String paste = "";
+
              paste += nums[random.nextInt(nums.length-1)];
              paste += nums[random.nextInt(nums.length-1)];
 
@@ -100,9 +101,18 @@ public class Password extends CPassword {
 
             return buffer.toString();
 
+        }else{
+
+
+            paste += lAl[random.nextInt(nums.length-1)];
+            paste += pAl[random.nextInt(nums.length-1)];
+
+            buffer.insert(random.nextInt(word.length()-1) , paste);
+
+            return buffer.toString();
+
         }
 
-        return "";
     }
 
 
@@ -185,7 +195,6 @@ public class Password extends CPassword {
 
 
 
-    @Override
     public String generatePassword() {
 
 
@@ -217,10 +226,7 @@ public class Password extends CPassword {
 
     }
 
-    @Override
-    public int howStrongIsThePassword() {
-        return super.howStrongIsThePassword();
-    }
+
 
 
     public int getPercentage() {
